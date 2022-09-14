@@ -5,6 +5,34 @@
     {% include "head.njk" %}
   </head>
   <body>
-    {{ content | safe }}
+    <section class="intro max-content">
+      <h1>
+        <span class="title-firstline">Complementary</span>
+        <span class="title-secondline">Space</span>
+      </h1>
+      <p>A wandering tale of a tragic design systems hero seeking purpose in a vast sea of spacing tokens...</p>
+    </section>
+    <div class="cubes">
+      <ul class="cube" style="top: 50%; left: 10%; --cube-size: 6rem; --cube-rotation: 35deg; --cube-float: -3s">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+      <ul class="cube" style="top: 80%; left: 50%; --cube-size: 8rem; --cube-rotation: 15deg; --cube-float: 2s">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
+      <ul class="cube" style="top: 60%; left: 70%; --cube-size: 4rem; --cube-rotation: 65deg">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <main class="max-content">
+      {{ content | safe }}
+    </main>
   </body>
 </html>
