@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: 1rem;
+  margin: 2rem;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
@@ -43,7 +43,7 @@ h1 {
 }
 
 .intro {
-  min-height: 80vh;
+  aspect-ratio: 4/3;
   display: flex;
   align-items: center;
   justify-content: center;
