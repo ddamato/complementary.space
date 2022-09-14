@@ -6,13 +6,13 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
-  font-weight: 300;
   letter-spacing: .1em;
+  line-height: 1.75;
   font-size: 1.2em;
-  color: #fff;
+  color: #ccc;
   background: #003;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #001, #003);
-  background: linear-gradient(to bottom, #001, #003);
+  background: -webkit-linear-gradient(to top, #001, #003);
+  background: linear-gradient(to top, #001, #003);
   background-attachment: fixed;
   overscroll-behavior: none;
 }
@@ -23,7 +23,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: min(3.2em, 8vw);
+  font-size: min(3.2em, 7vw);
   filter: drop-shadow(0 .125em 2px rgba(0, 0, 0, 1));
 }
 
@@ -65,7 +65,7 @@ main {
 
 .title-firstline {
   font-size: .5em;
-  --letter-spacing: .92em;
+  --letter-spacing: 3vw;
   letter-spacing: var(--letter-spacing);
   text-indent: var(--letter-spacing);
   color: #ec38bc;
@@ -73,7 +73,7 @@ main {
 
 .title-secondline {
   font-family: 'Syncopate', sans-serif;
-  --letter-spacing: 1.41em;
+  --letter-spacing: 9vw;
   letter-spacing: var(--letter-spacing);
   text-indent: var(--letter-spacing);
   color: #fff;
@@ -97,6 +97,7 @@ strong {
 .story h3 + h2 {
   margin: 0;
   font-size: 3em;
+  color: #ddd;
 }
 
 .story :not(p) + p::first-letter {
@@ -121,7 +122,7 @@ strong {
   inset: 0;
   z-index: -1;
   transform: translateZ(-1px) scale(2);
-  opacity: .4;
+  opacity: .15;
 }
 
 .cube {
