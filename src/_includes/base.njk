@@ -5,34 +5,43 @@
     {% include "head.njk" %}
   </head>
   <body>
+    <main>
+    <div class="cubes">
+      <div class="cube" style="
+        top: 30%; 
+        left: 10%; 
+        --cube-size: 6rem; 
+        --cube-rotation: 35deg; 
+        --cube-float: -3s">
+      </div>
+
+      <div class="cube" style="
+        top: 80%; 
+        left: 30%; 
+        --cube-size: 
+        8rem; 
+        --cube-rotation: 25deg; 
+        --cube-float: 2s">
+      </div>
+
+      <div class="cube" style="
+        top: 10%;
+        left: 90%;
+        --cube-size: 4rem;
+        --cube-rotation: 65deg">
+      </div>
+    </div>
+
     <section class="intro max-content">
       <h1>
         <span class="title-firstline">Complementary</span>
         <span class="title-secondline">Space</span>
       </h1>
-      <p>A wandering tale of a tragic design systems hero seeking purpose in a vast sea of spacing tokens...</p>
+      <p>The wandering tale of a tragic <strong>design systems hero</strong> seeking purpose in a vast sea of <strong>spacing tokens</strong>…</p>
     </section>
-    <div class="cubes">
-      <ul class="cube" style="top: 50%; left: 10%; --cube-size: 6rem; --cube-rotation: 35deg; --cube-float: -3s">
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-
-      <ul class="cube" style="top: 80%; left: 50%; --cube-size: 8rem; --cube-rotation: 15deg; --cube-float: 2s">
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-
-      <ul class="cube" style="top: 60%; left: 70%; --cube-size: 4rem; --cube-rotation: 65deg">
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
-    </div>
-    <main class="max-content">
+    <section class="story max-content">
       {{ content | safe }}
+    </section>
     </main>
   </body>
 </html>
