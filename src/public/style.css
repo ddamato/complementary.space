@@ -67,6 +67,7 @@ section {
   background-image: var(--dot-pattern);
   background-size: .25em .25em;
   background-position: center;
+  background-attachment: fixed;
   border: 1px solid;
   padding: 1rem;
 }
