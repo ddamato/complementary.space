@@ -26,13 +26,13 @@ body {
   background-attachment: fixed;
 }
 
-strong {
+a, strong {
   color: var(--callout-accent);
+  font-weight: bolder;
+  letter-spacing: .05em;
 }
 
 a {
-  color: var(--callout-accent);
-  font-weight: bolder;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
   position: relative;
