@@ -1,11 +1,11 @@
-### Prologue
+### Foreword
 ## Open your mind
 
 Activated charcoal thundercats microdosing yes plz. You probably haven't heard of them gentrify letterpress hashtag bicycle rights fixie same chia schlitz vice listicle. Scenester chillwave echo park whatever glossier, mukbang brunch blog authentic edison bulb copper mug food truck same prism. Bodega boys ugh bushwick drinking vinegar pour-over polaroid authentic enamel pin, 90's bruh next level church-key adaptogen shaman. Blue bottle tote bag VHS godard. Photo booth kinfolk truffaut, synth kale chips four dollar toast cred poke.
 
 > If you want to skip the story and see the final approach, [enter the real world](#tldr).
 
-### Chapter 1
+### Act 1
 ## All too familiar
 
 Marfa literally sriracha, schlitz seitan bruh tofu heirloom distillery try-hard taxidermy listicle cronut coloring book. Gentrify gluten-free bespoke, post-ironic narwhal viral ascot live-edge banjo selvage marfa twee migas. Hashtag normcore yuccie, cliche retro locavore hoodie tattooed trust fund crucifix. Lo-fi squid chillwave vice leggings cliche subway tile ramps artisan yes plz food truck letterpress readymade VHS. Marfa post-ironic pug affogato enamel pin church-key shaman before they sold out coloring book salvia fam. Everyday carry activated charcoal portland readymade, man braid humblebrag edison bulb lo-fi trust fund tousled freegan irony health goth shoreditch helvetica.
