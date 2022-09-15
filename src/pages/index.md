@@ -3,7 +3,7 @@
 
 Activated charcoal thundercats microdosing yes plz. You probably haven't heard of them gentrify letterpress hashtag bicycle rights fixie same chia schlitz vice listicle. Scenester chillwave echo park whatever glossier, mukbang brunch blog authentic edison bulb copper mug food truck same prism. Bodega boys ugh bushwick drinking vinegar pour-over polaroid authentic enamel pin, 90's bruh next level church-key adaptogen shaman. Blue bottle tote bag VHS godard. Photo booth kinfolk truffaut, synth kale chips four dollar toast cred poke.
 
-> If you aren't into stories and just want to see the approach, [enter the real world](#tldr).
+> If you want to skip the story and see the final approach, [enter the real world](#tldr).
 
 ### Chapter 1
 ## All too familiar
