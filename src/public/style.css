@@ -5,12 +5,13 @@
 /* =============================== variables =============================== */
 
 :root {
-  --box-foreground: #ccc;
+  --box-foreground: #ddd;
   --box-background: linear-gradient(to top, #001, #003);
   --box-accent: #fff;
   --callout-foreground: #26D0CE;
   --callout-background: #1A2980;
   --callout-accent: #ec38bc;
+  --code-background: rgba(0, 0, 153, 0.5);
   --dot-pattern: radial-gradient(var(--callout-background) 15%, rgba(0, 0, 17, .3) 16%);
   --cube-face: linear-gradient(to top, var(--callout-foreground), var(--callout-background));
   --wide-font:  'Syncopate', sans-serif;
@@ -95,7 +96,7 @@ p {
 
 .callout,
 .content blockquote,
-.content :not(p) + p::first-letter {
+.content > :not(p, img, blockquote) + p::first-letter {
   background-image: var(--dot-pattern);
   background-size: var(--space-near) var(--space-near);
   background-position: center;
@@ -154,6 +155,14 @@ p {
 /* =============================== content styles =============================== */
 
 .content h3 {
+  margin-top: var(--space-away);
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-size: var(--text-detail);
+  color: var(--callout-foreground);
+}
+
+.content blockquote h4 {
   margin: 0;
   text-transform: uppercase;
   font-size: var(--text-detail);
@@ -167,7 +176,7 @@ p {
   margin-bottom: var(--space-away);
 }
 
-.content :not(p, img) + p::first-letter {
+.content > :not(p, img, blockquote) + p::first-letter {
   font-family: var(--wide-font);
   float: left;
   line-height: 1rem;
@@ -176,7 +185,7 @@ p {
   font-size: 150%;
 }
 
-.content :where(p, img) + p {
+.content :where(p, img, blockquote) + p {
   text-indent: 4ch;
 }
 
@@ -200,6 +209,12 @@ p {
 
 .content blockquote p:last-child {
   margin-block-end: 0;
+}
+
+.content code {
+  background: var(--code-background);
+  padding: .125em .25em;
+  border-radius: .25em;
 }
 
 /* =============================== cube accent styles =============================== */
