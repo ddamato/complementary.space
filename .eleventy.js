@@ -1,4 +1,22 @@
+const markdownIt = require('markdown-it');
+const footnote = require('markdown-it-footnote');
+const createExamples = require('./bin/create-examples.js');
+
 module.exports = function(eleventyConfig) {
+
+  const options = {
+    html: true,
+    breaks: true,
+    linkify: true
+  };
+
+  const markdownLibrary = markdownIt(options).use(footnote);
+
+  eleventyConfig.setLibrary('md', markdownLibrary);
+
+  eleventyConfig.on('eleventy.before', async () => await createExamples());
+
+  eleventyConfig.addWatchTarget("./src/examples/");
 
   eleventyConfig.addFilter("year", (date) => `${new Date(date).getUTCFullYear()}`);
 

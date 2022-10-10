@@ -1,0 +1,87 @@
+*, :before, :after { 
+  box-sizing: border-box;
+}
+
+aside {
+  background: rgba(0, 0, 153, 0.5);
+  padding: .5rem;
+  text-align: center;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-block-start: 1rem;
+}
+
+:host > .layout {
+  filter: drop-shadow(4px 4px 0px #1A2980);
+}
+
+.layout {
+  --host-spacing: 5%;
+  display: flex;
+  justify-content: center;
+  gap: var(--host-spacing);
+}
+
+.host, .host :not(.content, .layout) {
+  border: 4px solid hotpink;
+  border-radius: 2px;
+}
+
+.host {
+  flex: 1;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  position: relative;
+  overflow: hidden;
+  padding-top: 50%;
+  margin: var(--host-spacing);
+}
+
+.content {
+  margin: var(--host-spacing);
+  gap: .5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.content .break {
+  margin-top: var(--host-spacing);
+  visibility: hidden;
+}
+
+.image:before,
+.image:after {
+  --rotation: 29.5deg;
+  content: '';
+  position: absolute;
+  border-top: inherit;
+  width: 120%;
+  top: 50%;
+  left: 50%;
+}
+
+.image:before {
+  transform: translate(-50%, -50%) rotate(calc(var(--rotation) * 1));
+}
+
+.image:after {
+  transform: translate(-50%, -50%) rotate(calc(var(--rotation) * -1));
+}
+
+.headline {
+  background: hotpink;
+  padding-top: 6%;
+  width: 50%;
+}
+
+.button {
+  padding-top: 10%;
+  width: 30%;
+  margin-left: auto;
+  margin-top: auto;
+}

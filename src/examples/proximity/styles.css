@@ -1,0 +1,48 @@
+*, :before, :after { 
+  box-sizing: border-box;
+}
+
+aside {
+  background: rgba(0, 0, 153, 0.5);
+  padding: .5rem;
+  text-align: center;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-block-start: 1rem;
+}
+
+.objects {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.objects hr {
+  flex: 1;
+  border: 0;
+  border-top: 4px dashed hotpink;
+}
+
+.objects li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.objects li:before {
+  content: '↧';
+  order: 1;
+  font-size: 2em;
+  margin-top: -0.25em;
+  font-weight: normal;
+}
+
+.objects :last-child {
+  margin-inline-start: auto;
+}

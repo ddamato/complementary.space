@@ -67,15 +67,17 @@ a {
   position: relative;
 }
 
-a:after {
-  content: '\0021b5';
-} 
+a[id] {
+  text-decoration: none;
+  font-family: monospace;
+}
 
 main {
   perspective: 1px;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+  scroll-behavior: smooth;
   padding: var(--space-away);
 }
 
@@ -96,7 +98,7 @@ p {
 
 .callout,
 .content blockquote,
-.content > :not(p, img, blockquote) + p::first-letter {
+.content > :not(p, img, blockquote, hr) + p::first-letter {
   background-image: var(--dot-pattern);
   background-size: var(--space-near) var(--space-near);
   background-position: center;
@@ -176,7 +178,7 @@ p {
   margin-bottom: var(--space-away);
 }
 
-.content > :not(p, img, blockquote) + p::first-letter {
+.content > :not(p, img, blockquote, hr) + p::first-letter {
   font-family: var(--wide-font);
   float: left;
   line-height: 1rem;
@@ -185,7 +187,7 @@ p {
   font-size: 150%;
 }
 
-.content :where(p, img, blockquote) + p {
+.content :where(p, img, blockquote, hr) + p {
   text-indent: 4ch;
 }
 
@@ -215,6 +217,17 @@ p {
   background: var(--code-background);
   padding: .125em .25em;
   border-radius: .25em;
+}
+
+.content hr {
+  max-width: 200px;
+  margin-inline: auto;
+  border: 0;
+  border-top: 1px solid;
+}
+
+.footnotes {
+  font-size: var(--text-detail);
 }
 
 /* =============================== cube accent styles =============================== */
