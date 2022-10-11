@@ -1,0 +1,37 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+aside {
+    background: rgba(0, 0, 153, 0.5);
+    padding: .5rem;
+    text-align: center;
+    max-width: 600px;
+    margin-inline: auto;
+    margin-block-start: 1rem;
+}
+
+.clip {
+    overflow: hidden;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: .8em;
+    max-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(4px 4px 0px #1A2980);
+}
+
+.circle {
+    border: 4px dashed hotpink;
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+

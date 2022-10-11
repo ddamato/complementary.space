@@ -1,4 +1,4 @@
-*, :before, :after { 
+*, *:before, *:after { 
   box-sizing: border-box;
 }
 
@@ -11,8 +11,107 @@ aside {
   margin-block-start: 1rem;
 }
 
+:host > .layout {
+  filter: drop-shadow(4px 4px 0px #1A2980);
+}
+
 code {
   background: var(--code-background);
   padding: .125em .25em;
   border-radius: .25em;
+}
+
+.layout {
+  perspective: 500px;
+  perspective-origin: center center;
+  display: grid;
+  margin-block: 5%;
+}
+
+.room {
+  grid-row: 1/1;
+  grid-column: 1/1;
+  position: relative;
+  padding-block-start: 2%;
+  padding-block-end: 8%;
+  padding-inline: calc(5% + 1rem);
+  margin-block: 5%;
+  margin-inline: auto;
+  background: rgba(0, 0, 17, 1);
+  border-top: 4px solid hotpink;
+  border-bottom: 4px solid hotpink;
+  border-left: 8px solid hotpink;
+  border-right: 8px solid hotpink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateZ(-100px) translateY(-100px) rotateX(-22.5deg);
+  transform-style: preserve-3d;
+}
+
+.room code {
+  opacity: .6;
+}
+
+.room:before,
+.room:after {
+  content: '';
+  position: absolute;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  background: inherit;
+  border: inherit;
+  top: -4px;
+  transform-origin: left top;
+}
+
+.room:before {
+  left: -4px;
+  transform: rotateY(-100deg);
+}
+
+.room:after {
+  left:calc(100% + 4px);
+  transform: rotateY(-80deg);
+}
+
+.paint {
+  grid-row: 1/1;
+  grid-column: 1/1;
+  position: relative;
+  padding-block-start: calc(5% + .5rem);
+  padding-block-end: calc(5% - .5rem);;
+  padding-inline: 1rem;
+  margin-block-start: 10%;
+  margin-block-end: 0;
+  margin-inline: auto;
+  background: rgba(0, 0, 17, 1);
+  border-left: 4px solid hotpink;
+  border-right: 4px solid hotpink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: calc(200px - 5%);
+}
+
+.paint:before,
+.paint:after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: 20%;
+  border-radius: 100%;
+  background: inherit;
+}
+
+.paint:before {
+  top: -10%;
+  border: 4px solid hotpink;
+}
+
+.paint:after {
+  bottom: -10%;
+  border: 4px solid hotpink;
+  clip-path: polygon(100% 48%, 0 48%, 0 100%, 100% 100%);
 }
