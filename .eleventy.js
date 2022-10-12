@@ -1,5 +1,6 @@
 const markdownIt = require('markdown-it');
 const footnote = require('markdown-it-footnote');
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const createExamples = require('./bin/create-examples.js');
 
 module.exports = function(eleventyConfig) {
@@ -19,6 +20,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/examples/");
 
   eleventyConfig.addFilter("year", (date) => `${new Date(date).getUTCFullYear()}`);
+
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   eleventyConfig.addPassthroughCopy({"src/public/**/*.(css|jpg|gif|png|svg|webmanifest|ico|pdf)": "/"});
 

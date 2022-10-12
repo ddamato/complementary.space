@@ -11,7 +11,7 @@
   --callout-foreground: #26D0CE;
   --callout-background: #1A2980;
   --callout-accent: #ec38bc;
-  --code-background: rgba(0, 0, 153, 0.5);
+  --code-background: rgba(0, 0, 153, 0.4);
   --dot-pattern: radial-gradient(var(--callout-background) 15%, rgba(0, 0, 17, .3) 16%);
   --cube-face: linear-gradient(to top, var(--callout-foreground), var(--callout-background));
   --wide-font:  'Syncopate', sans-serif;
@@ -226,11 +226,22 @@ p {
   border-radius: .25em;
 }
 
+pre.language-scss .token.variable {
+  color: var(--callout-accent);
+  font-weight: bolder;
+}
+
 .content hr {
   max-width: 200px;
   margin-inline: auto;
   border: 0;
   border-top: 1px solid;
+}
+
+.content sup {
+  display: inline-block;
+  text-indent: 0;
+  margin-block-start: -1em;
 }
 
 .footnotes {
