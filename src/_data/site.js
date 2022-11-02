@@ -6,9 +6,5 @@ const url = process.env.ELEVENTY_ENV === 'dev'
 
 module.exports = {
   url,
-  title: "Complementary Space",
-  navigation: {
-    work: '/',
-    about: '/about',
-  },
+  title: "Complementary Space"
 }

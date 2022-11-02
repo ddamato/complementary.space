@@ -1,0 +1,33 @@
+*, :before, :after { 
+  box-sizing: border-box;
+}
+
+aside {
+  background: rgba(0, 0, 153, 0.5);
+  padding: .5rem;
+  text-align: center;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-block-start: 1rem;
+}
+
+.layout {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5%;
+  max-width: 500px;
+  margin-inline: auto;
+  filter: drop-shadow(4px 4px 0px #1A2980);
+}
+
+span {
+  border: 4px solid hotpink;
+  display: block;
+  padding: 0 1.5rem 1.5rem;
+  background: rgba(0, 0, 0, .4);
+}
+
+span span {
+  transform: scale(.8);
+}
