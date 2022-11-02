@@ -224,11 +224,17 @@ p {
   background: var(--code-background);
   padding: .125em .25em;
   border-radius: .25em;
+  display: inline-block;
+  text-indent: initial;
 }
 
-pre.language-scss .token.variable {
-  color: var(--callout-accent);
+pre .token.variable {
   font-weight: bolder;
+  color: var(--callout-accent);
+}
+
+pre .token.comment {
+  opacity: .4;
 }
 
 .content hr {

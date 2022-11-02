@@ -1,7 +1,10 @@
 const markdownIt = require('markdown-it');
 const footnote = require('markdown-it-footnote');
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const createExamples = require('./bin/create-examples.js');
+
+function highlightRegex(match) {
+  return new RegExp(`(?<=<pre>.*>[^<]+)(${match})`, 'gmisu');
+}
 
 module.exports = function(eleventyConfig) {
 
@@ -21,7 +24,13 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("year", (date) => `${new Date(date).getUTCFullYear()}`);
 
-  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addTransform("css-token", function(content) {
+    const variable = highlightRegex('--[\\w-]+');
+    const comment = highlightRegex('\\/\\*[^*]+\\*\\/');
+    return content
+      .replaceAll(variable, '<span class="token variable">$1</span>')
+      .replaceAll(comment, '<span class="token comment">$1</span>')
+  });
 
   eleventyConfig.addPassthroughCopy({"src/public/**/*.(css|jpg|gif|png|svg|webmanifest|ico|pdf)": "/"});
 
