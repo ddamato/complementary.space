@@ -265,6 +265,28 @@ pre .token.comment {
   font-size: var(--text-detail);
 }
 
+.footnotes li {
+  position: relative;
+}
+
+.footnotes li:after {
+  content: '';
+  pointer-events: none;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  box-sizing: content-box;
+  position: absolute;
+  padding: var(--space-away);
+  top: 0;
+  left: 0;
+  margin: calc( var(--space-away) * -1);
+}
+
+.footnotes li:target:after {
+  background: var(--code-background);
+}
+
 /* =============================== cube accent styles =============================== */
 
 .cubes {

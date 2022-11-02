@@ -1,5 +1,6 @@
 const markdownIt = require('markdown-it');
 const footnote = require('markdown-it-footnote');
+const headings = require('markdown-it-named-headings');
 const createExamples = require('./bin/create-examples.js');
 
 function highlightRegex(match) {
@@ -14,7 +15,7 @@ module.exports = function(eleventyConfig) {
     linkify: true
   };
 
-  const markdownLibrary = markdownIt(options).use(footnote);
+  const markdownLibrary = markdownIt(options).use(footnote).use(headings);
 
   eleventyConfig.setLibrary('md', markdownLibrary);
 

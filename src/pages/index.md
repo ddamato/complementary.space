@@ -14,7 +14,7 @@ The following is a definition of design tokens from the [Salesforce Lightning De
 
 > Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes.
 
-You may be familiar with some basic examples of design tokens. For example, `--color-blue-500` should represent a shade of blue which a design team has determined to be a part of their regularly used palette of colors. The number often represents its placement among other blue colors within the palette. As you can see, it is possible to encode information about the value within the name. From here, the tokens can be published and used throughout the organization so values can be referenced instead of permanently written. If the value of `--color-blue-500` needs to change, that can happen away from the product development and inside of the curated palette.
+You may be familiar with some basic examples of design tokens. For example, `--color-blue-500`[^variable] should represent a shade of blue which a design team has determined to be a part of their regularly used palette of colors. The number often represents its placement among other blue colors within the palette. As you can see, it is possible to encode information about the value within the name. From here, the tokens can be published and used throughout the organization so values can be referenced instead of permanently written. If the value of `--color-blue-500` needs to change, that can happen away from the product development and inside of the curated palette.
 
 It's one task to curate a list of tokens, but it's an entirely different exercise to determine _where_ designers should use that token. In other words, as a design system maintainer, how do I provide guidance on when to use `--color-blue-500`? A solution comes from a related problem; dark-mode.
 
@@ -108,7 +108,7 @@ Admittedly, supporting this system outside of a development environment is most 
 
 The first task is to decide density levels; how many different shifts of density do you need to support? I recommend 3 as a good number to use. The first for the root of the page, the next for the majority of content, and the final for details and passive content. I've opted to avoid naming the levels to deny the possibility of reordering them with the added bonus of not needing to think of meaningful names.
 
-The next task is to create the "trigger" for the shift. This can be done in CSS by creating a selector which changes the values of variables for elements within and in the tree below. While you could use a class name, I recommend a data attribute. This ensures that class name manipulation doesn't affect the density curation and is often easier to spot when inspecting the DOM.
+The next task is to create the "trigger" for the shift. This can be done in CSS by creating a selector which changes the values of variables for elements within and in the tree below. While you could use a class name, I recommend a data attribute. This ensures that class name manipulation doesn't affect the density curation and is often easier to spot when inspecting the DOM.[^attribute]
 
 ```css
 [data-density-shift] {
@@ -139,8 +139,6 @@ body [data-density-shift] [data-density-shift] {
     /* declarations go here */
 }
 ```
-
-For improved developer experience, you could opt to provide a component which renders a container with the attribute automatically assigned to avoid typos and unexpected results.
 
 At this point it is time to curate the values. For the remainder of the examples, I'll be using CSS custom property syntax which can be duplicated into any CSS file for experimentation and further adjusted in the browser at run-time. For each declaration block, we will create the "near" and "away" variables.
 
@@ -203,6 +201,32 @@ body [data-density-shift] [data-density-shift] {
 }
 ```
 
+Getting typography to behave within the system is tricky as typography tends to be for the web. The root cause for failure is the lack of relationship between the spacing grid unit and the font line height while maintaining readability.[^typography] Generally speaking, you'll also want the font-size to decrease with each density shift.
+
+```css
+:root {
+    --density: .5rem; /* ~8pt grid */
+}
+
+body {
+    --space-near: calc(var(--density) * 3);
+    --space-away: calc(var(--density) * 5);
+    font-size: 1.5625rem;
+}
+
+body [data-density-shift] {
+    --space-near: calc(var(--density) * 2);
+    --space-away: calc(var(--density) * 3);
+    font-size: 1.25rem;
+}
+
+body [data-density-shift] [data-density-shift] {
+    --space-near: calc(var(--density) * 1);
+    --space-away: calc(var(--density) * 2);
+    font-size: 1rem;
+}
+```
+
 Finally, downstream component and application developers could use the tokens within their CSS styles.
 
 ```css
@@ -213,7 +237,7 @@ button {
 
 What you might notice is that the `<button/>` component will be rendered with exceptionally large padding when applied in the body without any density shifts. This is by design and allows for different sized components to exist without explicitly activating them. Smaller buttons exist in denser areas of the page. Looking for a smaller button is asking for the surrounding density to change.
 
-Getting typography to behave within the system is tricky as typography tends to be for the web. The root cause for failure is the lack of relationship between the spacing grid unit and the font line height while maintaining readability.
+[^variable]: I'll be using [CSS Custom Property](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) syntax to describe variables and tokens in this document. While you could use other methods of defining tokens, CSS Custom Properties are the most flexible since they can be redefined in different contexts. This will be helpful in later examples.
 
 [^paint]: In reality, the color of a room is dependent on factors that are often located within the physical space that would be challenging to systemitize. A digital composition is arguably much more manageable but the analogy is pleasant.
 
@@ -228,3 +252,7 @@ Getting typography to behave within the system is tricky as typography tends to 
 [^none]: You could also choose not to add space at all. This effectively makes the objects visually composed into a single item. This is comparable to applying `transparent` to a color to achieve a similar absence of a value. No token is needed to effectively remove the application of a property.
 
 [^importance]: The example here is specifically commenting on the relation of the title to the content, not to other titles. The underlying HTML elements which drive Search Engine Optimization (SEO) or assisted technology navigation using importance are frequently separate from the visual treatment. In other words, a `<p/>` can follow a `<h1/>`, `<h2/>`, `<h3/>` and so on. This is semantically valid independent of the font size for any of the elements.
+
+[^attribute]: For improved developer experience, you could opt to provide a component which renders a container with the attribute automatically assigned to avoid typos and unexpected results.
+
+[^typography]: There is a great deal more to web typography that will make things more difficult even without thinking of a new spacing approach. I highly recommend reading [Deep dive CSS: font metrics, line-height and vertical-align](https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align) to understand some of the pitfalls.
