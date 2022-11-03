@@ -245,13 +245,6 @@ pre .token.comment {
 }
 
 .content p > strong {
-  display: block;
-  margin-block: var(--space-away);
-  padding: var(--space-near);
-  font-size: var(--text-title);
-  line-height: 1.3;
-  border-left: .1em solid;
-  text-indent: 1.1ch;
   font-weight: 500;
 }
 

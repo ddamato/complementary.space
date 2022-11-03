@@ -24,9 +24,7 @@ As described above, design tokens should be able to drive this task. Places whic
 
 The answer here was to name the token by expected usage within the design. These are called "semantic tokens" and they describe purpose instead of describing the value itself. This introduces tokens such as `--body-background-color` which can be used to inform the web page background color without hinting at what the final color value is. This allows the background to be either a light color or dark one depending on an earlier assignment. Using semantic tokens in the styling of the application not only helps support light and dark-mode, but also any additional themeing experiements that the organization may want to explore.
 
-Semantic tokens are a quality of life improvement similar to writing the name of a room on a paint can, and opposed to writing the name of a color on the walls of a room. You can quickly recall the colors of each room by visiting the place with cans, make changes, and reassociate. All of this is done without visiting a single painted room to verify the color. [^paint]
-
-**Label the paint can instead of the wall.**
+Semantic tokens are a quality of life improvement similar to writing the name of a room on a paint can, and opposed to writing the name of a color on the walls of a room. **Label the paint can instead of the wall.** You can quickly recall the colors of each room by visiting the place with cans, make changes, and reassociate. All of this is done without visiting a single painted room to verify the color. [^paint]
 
 The difficulty that comes with adoption of semantic tokens is trust. Because `--body-background-color` doesn't explicitly suggest what color it will be, those looking to find a specific color will be disappointed. This requires a mental shift to cease thinking in terms of color and start thinking in terms of purpose. Asking "what is this thing?" instead of "what color should I use?" because the design system has the answer to the latter; only a product designer can answer the former.
 
@@ -35,9 +33,7 @@ The difficulty that comes with adoption of semantic tokens is trust. Because `--
 
 Determining why we choose a color is well-documented. We choose for accessibility, branding, precedence, feedback, and more. Encoding these into semantic token names is fairly straight-forward. As an example, error text is often red but which shade to choose will depend on the background the text is on. Choosing `--text-error-color` opens the possibility of different shades of red depending on the rest of the chosen colors.
 
-This works for color (along with other tokens such as font and roundness) because they are targeting elements and content. We can identify each piece of content as an object in a digital world with several properties of style. This is not the case for space. Because it is effectively nothing, it is hard to associate it with a name and further a purpose of its own. The space is dependent on the objects that create it.[^css]
-
-**Space is the absence of substance.**
+This works for color (along with other tokens such as font and roundness) because they are targeting elements and content. We can identify each piece of content as an object in a digital world with several properties of style. This is not the case for space. Because it is effectively nothing, it is hard to associate it with a name and further a purpose of its own. **The space is dependent on the objects that create it.**[^css]
 
 So what is the purpose of space? This is covered by the [Gestalt priniciple of proximity](https://www.nngroup.com/articles/gestalt-proximity/).
 
@@ -53,11 +49,11 @@ However, the spatial demonstrative words "here" and "there" suggest focus on a s
 
 > <ex-threshold>Specific location isn't important, only general relationship</ex-threshold>
 
-Another concept we'll need to introduce is scaling. When you share the video call application during a video call, you may get a tunneling effect. The video will show a smaller version of the desktop, which would include your video inside. This happens recursively until the amount of space to view the desktop is too small to render. It's the same objects in the video, just reduced to fit the smaller space. A move of your cursor will show the amount of distance traveled to be the same relatively between objects of each screen, even if the physical distance is different from a single point-of-view.
+Another concept we'll need to introduce is scaling. When you share the video call application during a video call, you may get a tunneling effect. The video will show a smaller version of the desktop, which would include your video inside. This happens recursively until the amount of space to view the desktop is too small to render. It's the same objects in the video, just reduced to fit the smaller area. A move of your cursor will show the amount of distance traveled to be the same relatively between objects of each screen, even if the physical distance is different from a single point-of-view.
 
-> <ex-scaling>The tunneling effect caused by screen sharing the video output itself</ex-scaling>
+> <ex-scaling>The tunneling effect scales content and space</ex-scaling>
 
-The bottom line here is we can change the size of objects and the space around them propotionally to maintain the same relationships but fit into a smaller area. Our user has one interface but can traverse across several visual densities at the same time.
+The bottom line here is we can change the size of objects and the space around them proportionally to maintain the same relationships but fit into a smaller area. Our user has one interface but can traverse across several visual densities at the same time.
 
 ### Application
 ## Wisely dense
@@ -97,16 +93,16 @@ The wireframe on the left could be a page, or a card within a page. The wirefram
 
 The notion of density shifts returns the creative freedom back to designers while maintaining a systematic application of the tokens. This provides designers the flexibility to decide if an area of the experience is meant to be spacious, compact, or something in between. Furthermore, a robust system where the spacing tokens are informed by a single grid unit value could support a themeable spacing system. One theme could support a roomy interface while another expects a data-dense table with a single value difference between them.
 
-This approach isn't limited to describing the area between objects. Many systems will tightly couple typography metrics to curate overall vertical rhythm in a composition. The density shift concept can be leveraged to drive font size changes in new contexts. As an example, a section title of a page should be hierarchically similar to the title of a card in comparison to the surrounding content for each.[^importance] Meanwhile, line-height is inversely propotional to density for the purposes of readability since observers are reading content across densities.
+This approach isn't limited to describing the area between objects. Many systems will tightly couple typography metrics to curate overall vertical rhythm in a composition. The density shift concept can be leveraged to drive font size changes in new contexts. As an example, a section title of a page should be hierarchically similar to the title of a card in comparison to the surrounding content for each.[^importance] Meanwhile, line-height is inversely proportional to density for the purposes of readability since observers are reading content across densities.
 
 ### Execution
 ## Filling the void
 
-Admittedly, supporting this system outside of a development environment is most likely a challenge. Design tools do not often provide complete coverage to the web medium. What follows will be the engineered solution used on this very site.
+Admittedly, supporting this system outside of a development environment is most likely a challenge. Design tools do not often provide complete coverage to the web medium. **What follows will be the engineered solution used on this very site.**
 
-The first task is to decide density levels; how many different shifts of density do you need to support? I recommend 3 as a good number to use. The first for the root of the page, the next for the majority of content, and the final for details and passive content. I've opted to avoid naming the levels to deny the possibility of reordering them with the added bonus of not needing to think of meaningful names.
+The first task is to decide density levels; how many different shifts of density do you need to support? Start with 3. The first for the root of the page for big headlines and calls to action, the next for the majority of content, and the final for details and passive content. I've opted to avoid naming the levels to deny the possibility of reordering them with the added bonus of not needing to think of meaningful names.
 
-The next task is to create the "trigger" for the shift. This can be done in CSS by creating a selector which changes the values of variables for elements within and in the tree below. While you could use a class name, I recommend a data attribute. This ensures that class name manipulation doesn't affect the density curation and is often easier to spot when inspecting the DOM.[^attribute]
+The next task is to create the "trigger" for the shift. This can be done in CSS by creating a selector which changes the values of variables for elements within and in the tree below. While you could use a class name, Here we use a data attribute. This ensures that class name manipulation doesn't affect the density curation and is often easier to spot when inspecting the DOM.[^attribute]
 
 ```css
 [data-density-shift] {
@@ -122,7 +118,7 @@ Shifting the density down is done by repeating the selector to find the next shi
 }
 ```
 
-I also recommend preparing the starting density at the body, so the resulting CSS declaration blocks should finally be prepared as the following:
+Start preparing the density at the body, so the resulting CSS declaration blocks should finally be prepared as the following:
 
 ```css
 body {
@@ -209,7 +205,7 @@ button {
 
 What you might notice is that the `<button/>` component will be rendered with exceptionally large padding when applied in the body without any density shifts. This is by design and allows for different sized components to exist without explicitly activating them. Smaller buttons exist in denser areas of the page. Looking for a smaller button is asking for the surrounding density to change.
 
-Getting typography to behave within the system is tricky as typography tends to be for the web. The root cause for failure is the lack of relationship between the spacing grid unit and the font line height while balancing readability.[^typography] Generally speaking, you'll also want the font-size to decrease with each density shift. The following is using a [Major Third typescale](https://type-scale.com/) as an example.
+Getting typography to behave within the system is tricky as typography tends to be for the web. The root cause for failure is the lack of relationship between the spacing grid unit and the font line height while balancing readability.[^typography] Generally speaking, you'll also want the font size to decrease with each density shift. The following is using a [Major Third typescale](https://type-scale.com/) as an example.
 
 ```css
 :root {
@@ -235,7 +231,7 @@ body [data-density-shift] [data-density-shift] {
 }
 ```
 
-Downstream component and application developers can leverage `em` units to target specific typography components and adjust text size as needed. The `em` unit will use the current font-size found in the density shift as a multiplier.[^em] In the example below, the `<h2/>` font-size will be 1.5 times the size found within the current density. This means that the resulting size of the text will be different at each density shift but propotionally the same in relation to all other text.
+Downstream component and application developers can leverage `em` units to target specific typography components and adjust the size of text as needed. The `em` unit will use the current font size found in the density shift as a multiplier.[^em] In the example below, the `<h2/>` font size will be 1.5 times the size found within the current density. This means that the resulting size of the text will be different at each density shift but proportionally the same in relation to all other text.
 
 ```css
 h2 {
@@ -248,7 +244,9 @@ h2 {
 
 Change is hard. Realistically this approach isn't meant to be a part of a migration effort but instead considered at the beginning of a system's creation. A point where the organization is ready to explore space as a conversation about relationships instead of feelings. This is easier said than done.
 
-Consider reviewing wireframes instead of high-fidelity mockups or live pages. Looking at the abstract concepts will help focus the attention on the relationships without including the noise about what the final values of space should be. You can indentify where areas of low density and high density will occur due to the nature of the content which will inform where a shift should take place.
+Consider reviewing wireframes instead of high-fidelity mockups or live pages. Looking at the abstract concepts will help focus the attention on the relationships without including the noise about what the final values of space should be. You can identify where areas of low and high density will occur due to the nature of the content. This will inform where a shift should take place.
+
+It is important to reiterate: **designers remain in control of the amount of space between elements and content.** This approach simply changes how designers communicate about space and streamlines the curation process. It allows designers to focus on what actually matters; guiding users toward fulfilling needs by way of an expertly crafted experience.
 
 [^variable]: I'll be using [CSS Custom Property](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) syntax to describe variables and tokens in this document. While you could use other methods of defining tokens, CSS Custom Properties are the most flexible since they can be redefined in different contexts. This will be helpful in later examples.
 
