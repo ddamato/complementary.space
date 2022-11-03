@@ -167,7 +167,7 @@ p {
 
 /* =============================== hero styles =============================== */
 
-.hero h1 {
+header h1 {
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -176,18 +176,23 @@ p {
   margin: 0;
 }
 
-.hero h1 strong {
+header h1 strong {
   font-size: 50%;
-  --letter-spacing: min(.73em, 3vw);
-  letter-spacing: var(--letter-spacing);
+  letter-spacing: min(.76em, 3vw);
 }
 
-.hero h1 span {
+header h1 span {
   font-family: var(--wide-font);
   line-height: 1;
-  --letter-spacing: min(1.1em, 9vw);
-  letter-spacing: var(--letter-spacing);
+  letter-spacing: min(1.1em, 9vw);
   color: var(--box-accent);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: 50vh;
+  filter: drop-shadow(4px 4px 2px #1A2980);
 }
 
 .hero p {
@@ -195,7 +200,13 @@ p {
   margin: 0;
   margin-block-start: var(--space-away);
   font-size: var(--text-title);
-  line-height: 1.1;
+  line-height: 1.3;
+  background-image: linear-gradient(45deg, var(--callout-accent), var(--callout-foreground));
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
 }
 
 .hero strong {
