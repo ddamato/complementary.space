@@ -85,7 +85,7 @@ This example adds more space on the left and right compared to the top and botto
 
 At this point, the main criticism you may identify is that only having two tokens is extremely limiting. The distance between sections of a page is not often the same as the distance between buttons in a navigation, even if they have similar relationships as near identical children of a parent. This is why many design systems usually land on the T-shirt sizing approach; to support the many various amounts of space. However, not only does T-shirt sizing oppose semantic naming, the abundance of choice is paradoxically causing the very choice of which token to use to become more difficult ([Hick's Law](https://lawsofux.com/hicks-law)). Reducing the number of decisions (ie., tokens) will increase the chance of an appropriate selection. Reframing the question to "what is the relationship between these items?" omits the artistic subjectivity that would otherwise cause a biased choice. The answer is near binary; they are either related or not.[^none]
 
-The method to unlock the expected additional values of space using this system is achieved by curated areas of shifting density; the practical application of the tunneling effect. This allows the physical amount of space between page sections to be larger than the amount between navigational buttons located deeper into the page.
+The method to unlock the expected additional values of space using this system is achieved by curated areas of shifting density; **the practical application of the tunneling effect.** This allows the physical amount of space between page sections to be larger than the amount between navigational buttons located deeper into the page.
 
 > <ex-wireframe>Is it a page or is it a card? Does it matter?</ex-wireframe>
 
@@ -248,7 +248,7 @@ Change is hard. Realistically, this approach isn't meant to be a part of a migra
 
 To start, consider reviewing wireframes instead of high-fidelity mockups or live pages. Looking at the abstract concepts will help focus the attention on the relationships without including the noise about what the final values of space should be. You can identify where areas of low and high density will occur due to content expectations. This will inform where a shift should take place.
 
-It is important to reiterate: **designers remain in control of the amount of space between elements and content.** This approach simply changes how designers communicate about space and streamlines the curation process. A designer can warrant the amount of space between elements by speaking in terms of relationships and density through a shared language and understanding. Finally, it allows designers to focus on what actually matters; guiding users toward fulfilling needs by way of an expertly crafted experience.
+It is important to reiterate: **designers remain in control of the amount of space between elements and content.** This approach simply changes how designers communicate about space and streamlines the curation process. A designer can warrant the amount of space between elements by speaking in terms of relationships and density through a shared language and understanding. Finally, it allows designers to focus on what actually matters; guiding users toward satisfaction by way of an expertly crafted experience.
 
 <div class="signoff">
     <p>Go boldly,</p>
@@ -266,7 +266,7 @@ It is important to reiterate: **designers remain in control of the amount of spa
 
 [^relationships]: When I started thinking about how to quantify space before using density shifts, I originally considered using "degrees" to identify amounts of space; just like how there are degrees of social separation. While I believe a person's first introduction to the idea would potentially slow them down to learn more about the approach, ultimately the usage was discarded since it is no different than T-shirt sizing. Furthermore, trying to provide a meaningful scale and example using the gray area of friends and acquaintences would be socially awkward.
 
-[^margin]: I'm avoiding `margin` here because it commonly can achieve both space around and space between items. In modern development, `margin` is often avoided for specific amounts of space and instead set as `auto` to help with positioning in responsive layouts.
+[^margin]: I'm avoiding `margin` here because it commonly can achieve both space around and space between items. In modern development, `margin` is often avoided for specific amounts of space and instead set as `auto` to help with positioning in responsive layouts. "Features" like [margin collapsing](https://www.joshwcomeau.com/css/rules-of-margin-collapse/) cause irregularities when crafting layouts while `padding` follows a more conventional ruleset.
 
 [^none]: You could also choose not to add space at all. This effectively makes the objects visually composed into a single item. This is comparable to applying `transparent` to a color to achieve a similar absence of a value. No token is needed to effectively remove the application of a property.
 
