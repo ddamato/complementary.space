@@ -192,7 +192,6 @@ header h1 span {
   display: flex;
   align-items: center;
   min-height: 50vh;
-  filter: drop-shadow(0 0 1em var(--callout-background));
   padding-block: var(--space-away);
 }
 

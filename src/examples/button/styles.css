@@ -21,7 +21,7 @@ aside {
 .layout div {
   border: 4px dashed hotpink;
   display: flex;
-  padding: 1rem;
+  padding: .5rem;
   background: rgba(0, 0, 0, .4);
   justify-content: center;
   align-items: center;
@@ -34,5 +34,7 @@ button {
   border-radius: .25em;
   color: white;
   font: inherit;
-  padding: .5em 1em;
+  padding: .25em .5em;
+  white-space: pre;
+  font-size: .8em;
 }
