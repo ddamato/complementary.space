@@ -196,9 +196,7 @@ header h1 span {
 }
 
 .hero p {
-  color: var(--callout-foreground);
   margin: 0;
-  margin-block-start: var(--space-away);
   font-size: var(--text-title);
   line-height: 1.3;
   background-image: linear-gradient(45deg, var(--callout-accent), var(--callout-foreground));
@@ -207,10 +205,6 @@ header h1 span {
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent; 
   -moz-text-fill-color: transparent;
-}
-
-.hero strong {
-  font-weight: normal;
 }
 
 /* =============================== content styles =============================== */
