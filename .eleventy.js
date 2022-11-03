@@ -33,7 +33,7 @@ module.exports = function(eleventyConfig) {
       .replaceAll(comment, '<span class="token comment">$1</span>')
   });
 
-  eleventyConfig.addPassthroughCopy({"src/public/**/*.(css|jpg|gif|png|svg|webmanifest|ico|pdf)": "/"});
+  eleventyConfig.addPassthroughCopy({"src/public/**/*.(css|jpg|jpeg|gif|png|svg|webmanifest|ico|pdf)": "/"});
 
   return {
     // When a passthrough file is modified, rebuild the pages:

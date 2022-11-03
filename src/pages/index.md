@@ -248,6 +248,12 @@ Consider reviewing wireframes instead of high-fidelity mockups or live pages. Lo
 
 It is important to reiterate: **designers remain in control of the amount of space between elements and content.** This approach simply changes how designers communicate about space and streamlines the curation process. It allows designers to focus on what actually matters; guiding users toward fulfilling needs by way of an expertly crafted experience.
 
+<div class="signoff">
+    <p>Go boldly,</p>
+    <img src="/donnie.jpeg"/>
+    <a href="https://donnie.damato.design">Donnie D'Amato,<br/>Design Systems Architect</a>
+</div>
+
 [^variable]: I'll be using [CSS Custom Property](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) syntax to describe variables and tokens in this document. While you could use other methods of defining tokens, CSS Custom Properties are the most flexible since they can be redefined in different contexts. This will be helpful in later examples.
 
 [^paint]: In reality, the color of a room is dependent on factors that are often located within the physical space that would be challenging to systemitize. A digital composition is arguably much more manageable but the analogy is pleasant.

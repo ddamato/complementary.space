@@ -103,7 +103,7 @@ p {
   background-size: var(--space-near) var(--space-near);
   background-position: center;
   background-attachment: fixed;
-  border: 1px solid;
+  border: 1px solid var(--callout-foreground);
   padding: var(--space-near);
 }
 
@@ -196,12 +196,6 @@ p {
   margin: var(--space-away) 0;
 }
 
-.content img {
-  width: 100%;
-  display: inline-block;
-  margin-block: var(--space-away);
-}
-
 .content blockquote {
   padding: var(--space-away);
 }
@@ -217,7 +211,8 @@ p {
 .content pre {
   background: var(--code-background);
   padding: var(--space-away);
-  border-radius: .25em;
+  overflow: auto;
+  border: 1px solid var(--callout-foreground);
 }
 
 .content :not(pre) code {
@@ -252,6 +247,26 @@ pre .token.comment {
   display: inline-block;
   text-indent: 0;
   margin-block-start: -1em;
+}
+
+.signoff {
+  margin-block: var(--space-away);
+}
+
+.signoff p {
+  font-size: var(--text-title);
+}
+
+.signoff img {
+  display: block;
+  max-width: 100px;
+  border-radius: 100%;
+  border: 3px solid var(--callout-accent);
+  margin-block: var(--space-away);
+}
+
+.signoff a {
+  font-size: var(--text-detail);
 }
 
 .footnotes {
