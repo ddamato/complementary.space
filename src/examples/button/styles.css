@@ -1,0 +1,38 @@
+*, :before, :after { 
+  box-sizing: border-box;
+}
+
+aside {
+  background: rgba(0, 0, 153, 0.5);
+  padding: .5rem;
+  text-align: center;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-block-start: 1rem;
+}
+
+.layout {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.layout div {
+  border: 4px dashed hotpink;
+  display: flex;
+  padding: 1rem;
+  background: rgba(0, 0, 0, .4);
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+button {
+  background: hotpink;
+  border: none;
+  border-radius: .25em;
+  color: white;
+  font: inherit;
+  padding: .5em 1em;
+}

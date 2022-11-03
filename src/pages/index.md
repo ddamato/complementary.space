@@ -5,7 +5,7 @@ What you are about to read is a provocative take on how we think of space in des
 
 On the surface selecting an amount of space seems to be a subjective determination. However, once we identify the why, we can encode the purpose into a systematic usage making the decision to choose one amount of space over another more clear and objective.
 
-Throw out those T-shirt sized design tokens, it's time we back up our decisions with meaningful motives.
+Throw out those T-shirt sized design tokens, it's time we back up our decisions with meaningful motives and prepare for the future.
 
 ### History
 ## Design tokens
@@ -16,24 +16,24 @@ The following is a definition of design tokens from the [Salesforce Lightning De
 
 You may be familiar with some basic examples of design tokens. For example, `--color-blue-500`[^variable] should represent a shade of blue which a design team has determined to be a part of their regularly used palette of colors. The number often represents its placement among other blue colors within the palette. As you can see, it is possible to encode information about the value within the name. From here, the tokens can be published and used throughout the organization so values can be referenced instead of permanently written. If the value of `--color-blue-500` needs to change, that work can happen away from the product development and inside of the curated palette.
 
-It is one task to curate a list of tokens, but it's an entirely different exercise to determine _where_ designers should use that token. In other words, as a design system maintainer, how do I provide guidance on when to use `--color-blue-500`? A solution comes from a related problem; dark-mode.
+It is one task to curate a list of tokens, but it's an entirely different exercise to determine _where_ designers should use that token. In other words, as a design system maintainer, **how do I provide guidance on when to use `--color-blue-500`?** A solution comes from a related problem; dark-mode.
 
-Many web applications and sites were designed in a primarily light colored theme; expected to resemble paper. After all, the pages on the web were originally designed to be documents. However, people began to identify [the benefits of dark mode](https://blog.weekdone.com/why-you-should-switch-on-dark-mode/). Around 2019, there was a surge of activity in the web design community looking for the most efficient and elegant ways to create beautiful and usable dark-modes for existing pages.
+Many web applications and sites were designed in a primarily light colored theme; expected to resemble paper. After all, the pages on the web were originally intended to be documents. However, people began to identify [the benefits of dark mode](https://blog.weekdone.com/why-you-should-switch-on-dark-mode/). Around 2019, there was a surge of activity in the web design community looking for the most efficient and elegant ways to create beautiful and usable dark-modes for existing pages.
 
-As described above, design tokens should be able to drive this task. Places which used to be one value assigned by a token now needed to resolve to an entirely different value. This should be as easy as changing the current value of `--color-blue-500` to another color. Except, this will ruin the relationship between the name and the value that was once assigned. As a more dramatic example, body text which might be `--color-black` now needed to have a light color assigned for dark-mode. This would ultimately cause confusion when designing an entire experience with dozens of tokens named after their colors.
+As described above, design tokens should be able to drive this task. Places which used to be one value assigned by a token now needed to resolve to an entirely different value. This should be as easy as changing the current value of `--color-blue-500` to another color. Except, **this will ruin the relationship between the name and the value that was once assigned.** As a more dramatic example, body text which might be `--color-black` now may need to have a light color assigned for dark-mode. This would ultimately cause confusion when designing an entire experience with dozens of tokens named after their colors.
 
-The answer here was to name the token by expected usage within the design. These are called "**semantic tokens**" and they describe purpose instead of describing the value itself. This introduces tokens such as `--body-background-color` which can be used to inform the web page background color without hinting at what the final color value is. This allows the background to be either a light color or dark one depending on an earlier assignment. Using semantic tokens in the styling of the application not only helps support light and dark-mode, but also any additional themeing experiements that the organization may want to explore.
+The answer here was to name the token by expected usage within the design. These are called "**semantic tokens**" and they describe purpose instead of describing the value itself. This introduces tokens such as `--body-background-color` which can be used to inform the web page background color without hinting at what the final color value is. This allows the background to be either a light or dark color depending on an earlier assignment. Using semantic tokens in the styling of the application not only helps support light and dark-mode, but also any additional theming experiements that the organization may want to explore.
 
-Semantic tokens are a quality of life improvement similar to writing the name of a room on a paint can, and opposed to writing the name of a color on the walls of a room. **Label the paint can instead of the wall.** You can quickly recall the colors of each room by visiting the place with cans, make changes, and reassociate. All of this is done without visiting a single painted room to verify the color. [^paint]
+Semantic tokens are a quality of life improvement similar to writing the name of a room on a paint can; opposed to writing the name of a color on the walls of a room. **Label the paint can instead of the wall.** You can quickly recall the colors of each room by visiting the place with cans, make changes, and reassociate. All of this is done without visiting a single painted room to verify the color. [^paint]
 
-The difficulty that comes with adoption of semantic tokens is trust. Because `--body-background-color` doesn't explicitly suggest what color it will be, those looking to find a specific color will be disappointed. This requires a mental shift to cease thinking in terms of color and start thinking in terms of purpose. Asking "what is this thing?" instead of "what color should I use?" because the design system has the answer to the latter; only a product designer can answer the former.
+The difficulty that comes with adoption of semantic tokens is trust. Because `--body-background-color` doesn't explicitly suggest what color it will be, those looking to find a specific color will be disappointed. This requires a mental shift to cease thinking in terms of color value and start thinking in terms of purpose. Asking "what is this thing?" instead of "what color should I use?" because the design system has the answer to the latter; only a product designer can answer the former.
 
 ### Concept
 ## Deep into space
 
-Determining why we choose a color is well-documented. We choose for accessibility, branding, precedence, feedback, and more. Encoding these into semantic token names is fairly straight-forward. As an example, error text is often red but which shade to choose will depend on the background the text is on. Choosing `--text-error-color` opens the possibility of different shades of red depending on the rest of the chosen colors.
+Determining why we choose a color is well-documented. We choose for accessibility, branding, precedence, feedback, and more. Encoding these into semantic token names is fairly straight-forward. As an example, error text is often red but which shade to choose will depend on the background the text is on. Choosing `--text-error-color` opens the possibility of different shades of red depending on the rest of the chosen colors. Clearly, it would be best to choose a semantic naming convention for all tokens in order allow for style flexibility.
 
-This works for color (along with other tokens such as font and roundness) because they are targeting elements and content. We can identify each piece of content as an object in a digital world with several properties of style. This is not the case for space. Because it is effectively nothing, it is hard to associate it with a name and further a purpose of its own. **The space is dependent on the objects that create it.**[^css]
+The semantic naming convention works for easily for color (along with other tokens such as font and roundness) because they are targeting elements and content. We can identify each piece of content as an object in a digital world with several properties of style. This is not the case for space. Because it is effectively nothing, it is hard to associate it with a name and further a purpose of its own. **Space is dependent on the objects that create it.**[^css]
 
 So what is the purpose of space? This is covered by the [Gestalt priniciple of proximity](https://www.nngroup.com/articles/gestalt-proximity/).
 
@@ -41,15 +41,15 @@ So what is the purpose of space? This is covered by the [Gestalt priniciple of p
 
 In other words, objects that are closer together are perceived as more related than those which are farther apart. This means the key to naming space values as semantic tokens has to do with encoding the relation to the surrounding items.
 
-Let us consider social relationships to help create an analogous example. When you were young, you most likely lived in a home with your family. Each person within the home was most likely closely related to you in some way. In contrast, the majority of people who live outside of your home have a more distant relationship from you. In this way there are people that are near to you, and those that are far away from you.[^relationships] In other words, people that are _here_ and people that are _there_.[^incomplete]
+To do this, let us consider social relationships to help create an analogous example. When you were young, you most likely lived in a home with your family. Each person within the home was most likely closely related to you in some way. In contrast, the majority of people who live outside of your home have a more distant relationship from you. In this way there are people that are close to you, and those that are far from you.[^relationships] In other words, people that are _here_ and people that are _there_.[^incomplete]
 
 > <ex-proximity>Spatial demonstratives relative to a subject</ex-proximity>
 
-However, the spatial demonstrative words "here" and "there" suggest focus on a specific place. Remember, we are not concerned with the objects or the locations. We are more interested in the space between those objects. Therefore, we assign distance words to help identify the spatial order of the objects as abstract concepts: "near" and "away". If it helps, you can envision a circular threshold that surrounds a subject and clearly defines when something is near or not. If someone says an object is "near", you might not know where it is exactly but you can be sure which circle it is inside using our ruleset.
+However, the spatial demonstrative words "here" and "there" suggest focus on a specific place. Remember, we are not concerned with the objects or the locations. We are more interested in the separation between those objects. Therefore, we assign distance words to help identify the spatial order of the objects as abstract concepts: "near" and "away". If it helps, you can envision a circular threshold that surrounds a subject and clearly defines when something is near or not. If someone says an object is "near", you might not know where it is exactly but you can be sure which circle it is inside using our ruleset.
 
 > <ex-threshold>Specific location isn't important, only general relationship</ex-threshold>
 
-Another concept we'll need to introduce is scaling. When you share the video call application during a video call, you may get a tunneling effect. The video will show a smaller version of the desktop, which would include your video inside. This happens recursively until the amount of space to view the desktop is too small to render. It's the same objects in the video, just reduced to fit the smaller area. A move of your cursor will show the amount of distance traveled to be the same relatively between objects of each screen, even if the physical distance is different from a single point-of-view.
+Another concept we'll need to introduce is scaling. When you share a video call application during a video call, you may get a tunneling effect. The video will show a smaller version of the desktop on screen, which would include your video inside. This happens recursively until the amount of space to view the desktop is too small to render. It's the same objects in the video, just reduced to fit the smaller area. A move of your cursor will show the amount of distance traveled to be the same relatively between objects of each screen, even if the physical distance is different from a single point-of-view.
 
 > <ex-scaling>The tunneling effect scales content and space</ex-scaling>
 
@@ -63,7 +63,7 @@ You may be familiar with the concepts of adding spacing using CSS and foundation
 - **Gap** is the space _between_ items.
 - **Padding** is the space _around_ items.
 
-We can extend this a bit farther by speaking in terms of relationships. That is, the gap represents a much closer relationship between the items that surround the space because they are all children in the same "house". While the padding often attempts to separate the items between "houses". So this means that we can often assign a "near" spacing token to the gap property and the "away" spacing token to padding property in areas where we want to display the appropriate relationship.
+We can extend this a bit farther by speaking in terms of relationships. That is, the gap represents a much closer relationship between the items because they are all children in the same "house". While the padding often attempts to separate the items between "houses". So this means that we can often assign a "near" spacing token to the gap property and the "away" spacing token to padding property in areas where we want to display the appropriate relationship.
 
 ```css
 ul {
@@ -83,7 +83,7 @@ button {
 
 This example adds more space on the left and right compared to the top and bottom as is commonly applied to buttons. The important idea here is that there are only two tokens and that the name makes relationships clear.
 
-At this point, the main criticism you may declare is that only having two tokens is extremely limiting. The distance between sections of a page is not often the same as the distance between buttons in a navigation, even if they have similar relationships as near identical children of a parent. This is why many design systems usually land on the T-shirt sizing approach; to support the many various amounts of space. However, not only does T-shirt sizing oppose semantic naming, the abundance of choice is paradoxically causing the very choice of which token to use to become more difficult ([Hick's Law](https://lawsofux.com/hicks-law)). Reducing the number of decisions (ie., tokens) will increase the chance of an appropriate selection. Reframing the question to "what is the relationship between these items?" omits the artistic subjectivity that would otherwise cause biased choices by feeling. The answer is near binary; they are either related or not.[^none]
+At this point, the main criticism you may identify is that only having two tokens is extremely limiting. The distance between sections of a page is not often the same as the distance between buttons in a navigation, even if they have similar relationships as near identical children of a parent. This is why many design systems usually land on the T-shirt sizing approach; to support the many various amounts of space. However, not only does T-shirt sizing oppose semantic naming, the abundance of choice is paradoxically causing the very choice of which token to use to become more difficult ([Hick's Law](https://lawsofux.com/hicks-law)). Reducing the number of decisions (ie., tokens) will increase the chance of an appropriate selection. Reframing the question to "what is the relationship between these items?" omits the artistic subjectivity that would otherwise cause a biased choice. The answer is near binary; they are either related or not.[^none]
 
 The method to unlock the expected additional values of space using this system is achieved by curated areas of shifting density; the practical application of the tunneling effect. This allows the physical amount of space between page sections to be larger than the amount between navigational buttons located deeper into the page.
 
@@ -205,6 +205,8 @@ button {
 
 What you might notice is that the `<button/>` component will be rendered with exceptionally large padding when applied in the body without any density shifts. This is by design and allows for different sized components to exist without explicitly activating them. Smaller buttons exist in denser areas of the page. Looking for a smaller button is asking for the surrounding density to change.
 
+> <ex-button>Density informs the element size</ex-button>
+
 Getting typography to behave within the system is tricky as typography tends to be for the web. The root cause for failure is the lack of relationship between the spacing grid unit and the font line height while balancing readability.[^typography] Generally speaking, you'll also want the font size to decrease with each density shift. The following is using a [Major Third typescale](https://type-scale.com/) as an example.
 
 ```css
@@ -240,13 +242,13 @@ h2 {
 ```
 
 ### Adoption
-## Space for everyone
+## A space for everyone
 
-Change is hard. Realistically this approach isn't meant to be a part of a migration effort but instead considered at the beginning of a system's creation. A point where the organization is ready to explore space as a conversation about relationships instead of feelings. This is easier said than done.
+Change is hard. Realistically, this approach isn't meant to be a part of a migration effort but instead considered at the beginning of a system's creation. A point where the organization wholly agrees to explore space as a conversation about relationships and density. This is easier said than done.
 
-Consider reviewing wireframes instead of high-fidelity mockups or live pages. Looking at the abstract concepts will help focus the attention on the relationships without including the noise about what the final values of space should be. You can identify where areas of low and high density will occur due to the nature of the content. This will inform where a shift should take place.
+To start, consider reviewing wireframes instead of high-fidelity mockups or live pages. Looking at the abstract concepts will help focus the attention on the relationships without including the noise about what the final values of space should be. You can identify where areas of low and high density will occur due to content expectations. This will inform where a shift should take place.
 
-It is important to reiterate: **designers remain in control of the amount of space between elements and content.** This approach simply changes how designers communicate about space and streamlines the curation process. It allows designers to focus on what actually matters; guiding users toward fulfilling needs by way of an expertly crafted experience.
+It is important to reiterate: **designers remain in control of the amount of space between elements and content.** This approach simply changes how designers communicate about space and streamlines the curation process. A designer can warrant the amount of space between elements by speaking in terms of relationships and density through a shared language and understanding. Finally, it allows designers to focus on what actually matters; guiding users toward fulfilling needs by way of an expertly crafted experience.
 
 <div class="signoff">
     <p>Go boldly,</p>
@@ -258,7 +260,7 @@ It is important to reiterate: **designers remain in control of the amount of spa
 
 [^paint]: In reality, the color of a room is dependent on factors that are often located within the physical space that would be challenging to systemitize. A digital composition is arguably much more manageable but the analogy is pleasant.
 
-[^css]: This aligns with the way we normally apply space in CSS. It is more common to add space to an object than it is to create an element for the sole purpose of adding space.
+[^css]: This aligns with the way we normally apply space in CSS. It is more common to add space to an object than it is to create an element for the sole purpose of existing as space itself.
 
 [^incomplete]: While English has only two words, other languages have additional words to further divide referencial concepts. For example according to [Demonstratives in discourse](https://langsci-press.org/catalog/book/282), Estonian has 6 words: demonstratives _too_ ‘that’, _seal_ ‘there’, and _sealt_ ‘thence’ are used while referring to distant referents while demonstratives _see_ ‘this’, _siin_ ‘here’, and _siit_ ‘hence’ are used for referring to near referents. While this fact might possibly support more than the concepts of here and there, this exploration will argue that the limited set is more helpful.
 
