@@ -1,6 +1,6 @@
 const markdownIt = require('markdown-it');
 const footnote = require('markdown-it-footnote');
-const headings = require('markdown-it-named-headings');
+const anchor = require('markdown-it-anchor');
 const createExamples = require('./bin/create-examples.js');
 
 function highlightRegex(match) {
@@ -15,7 +15,7 @@ module.exports = function(eleventyConfig) {
     linkify: true
   };
 
-  const markdownLibrary = markdownIt(options).use(footnote).use(headings);
+  const markdownLibrary = markdownIt(options).use(footnote).use(anchor);
 
   eleventyConfig.setLibrary('md', markdownLibrary);
 
@@ -33,7 +33,7 @@ module.exports = function(eleventyConfig) {
       .replaceAll(comment, '<span class="token comment">$1</span>')
   });
 
-  eleventyConfig.addPassthroughCopy({"src/public/**/*.(css|jpg|jpeg|gif|png|svg|webmanifest|ico|pdf)": "/"});
+  eleventyConfig.addPassthroughCopy({"src/public/**/*.(css|jpg|jpeg|gif|png|svg|webmanifest|ico|pdf|js)": "/"});
 
   return {
     // When a passthrough file is modified, rebuild the pages:

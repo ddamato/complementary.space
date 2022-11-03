@@ -6,5 +6,6 @@ const url = process.env.ELEVENTY_ENV === 'dev'
 
 module.exports = {
   url,
-  title: "Complementary Space"
+  title: "Complementary Space",
+  description: "A provocative take on how we think of space in design",
 }

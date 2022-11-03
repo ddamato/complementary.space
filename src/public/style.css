@@ -107,6 +107,63 @@ p {
   padding: var(--space-near);
 }
 
+/* =============================== contents styles =============================== */
+
+.contents {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.contents ul {
+  list-style: none;
+  text-align: right;
+  padding: var(--space-away);
+  margin: 0;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  pointer-events: initial;
+  gap: var(--space-near);
+  max-width: 60px;
+  background: transparent;
+  direction: rtl;
+  transition: background 1s 1s ease, max-width .5s 1s ease;
+  overflow: hidden;
+}
+
+.contents ul:hover {
+  max-width: 100%;
+  background: var(--box-background);
+  transition: background .5s ease, max-width 1s ease;
+}
+
+.contents a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: .218s ease;
+}
+
+.contents [aria-current] a,
+.contents a:hover {
+  color: white;
+}
+
+.contents a:before {
+  content: '\002022';
+  font-size: 2em;
+  padding-inline: var(--space-near);
+  margin-inline-end: var(--space-away);
+}
+
 /* =============================== hero styles =============================== */
 
 .hero {
