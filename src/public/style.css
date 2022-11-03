@@ -58,7 +58,7 @@ body {
 
 a, strong {
   color: var(--callout-accent);
-  font-weight: bolder;
+  font-weight: 500;
 }
 
 a {
@@ -78,6 +78,7 @@ main {
   overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
+  scroll-padding-top: var(--space-away);
   padding: var(--space-away);
 }
 
@@ -135,13 +136,13 @@ p {
   max-width: 60px;
   background: transparent;
   direction: rtl;
-  transition: background 1s 1s ease, max-width .5s 1s ease;
+  transition: background 1s 1s ease, max-width .5s 0s ease;
   overflow: hidden;
 }
 
 .contents ul:hover {
   max-width: 100%;
-  background: var(--box-background);
+  background: #003;
   transition: background .5s ease, max-width 1s ease;
 }
 
@@ -166,24 +167,11 @@ p {
 
 /* =============================== hero styles =============================== */
 
-.hero {
-  aspect-ratio: 2/1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  gap: var(--space-near);
-  padding: var(--space-away);
-}
-
 .hero h1 {
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  font-size: min(3.2em, 7vw);
+  font-size: min(1em, 7vw);
   filter: drop-shadow(0 .125em 3px #000000);
   margin: 0;
 }
@@ -192,7 +180,6 @@ p {
   font-size: 50%;
   --letter-spacing: min(.73em, 3vw);
   letter-spacing: var(--letter-spacing);
-  text-indent: var(--letter-spacing);
 }
 
 .hero h1 span {
@@ -200,15 +187,19 @@ p {
   line-height: 1;
   --letter-spacing: min(1.1em, 9vw);
   letter-spacing: var(--letter-spacing);
-  text-indent: var(--letter-spacing);
   color: var(--box-accent);
 }
 
 .hero p {
-  max-width: 45ch;
-  padding-inline: var(--space-near);
   color: var(--callout-foreground);
   margin: 0;
+  margin-block-start: var(--space-away);
+  font-size: var(--text-title);
+  line-height: 1.1;
+}
+
+.hero strong {
+  font-weight: normal;
 }
 
 /* =============================== content styles =============================== */
@@ -246,7 +237,7 @@ p {
 }
 
 .content :where(p, img, blockquote, hr, pre, ul) + p {
-  text-indent: 4ch;
+  text-indent: min(4ch, 4vw);
 }
 
 .content :where(blockquote, hr) {
