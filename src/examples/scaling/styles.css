@@ -31,3 +31,17 @@ span {
 span span {
   transform: scale(.7);
 }
+
+@media print {
+  aside {
+    background: none;
+  }
+
+  .layout {
+    filter: none !important;
+  }
+
+  span {
+    border-color: black;
+  }
+}

@@ -22,6 +22,34 @@
   --text-title: 2em;
 }
 
+@media print {
+  :root {
+    --box-foreground: #000;
+    --box-background: #fff;
+    --box-accent: #000;
+    --callout-foreground: #000;
+    --callout-background: #1A2980;
+    --callout-accent: #000;
+    --code-background: #fff;
+    --dot-pattern: #fff;
+  }
+
+  * {
+    filter: none !important;
+    perspective: none !important;
+    overflow: visible !important;
+  }
+
+  blockquote {
+    page-break-inside: avoid;
+  }
+
+  .contents,
+  .cubes {
+    display: none !important;
+  }
+}
+
 /* =============================== density shifts styles =============================== */
 
 body {

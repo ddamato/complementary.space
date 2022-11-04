@@ -85,3 +85,21 @@ aside {
   margin-left: auto;
   margin-top: auto;
 }
+
+@media print {
+  aside {
+    background: none;
+  }
+
+  .layout {
+    filter: none !important;
+  }
+
+  .host, .host :not(.content, .layout) {
+    border-color: black;
+  }
+
+  .headline {
+    background: black;
+  }
+}

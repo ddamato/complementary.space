@@ -35,3 +35,16 @@ aside {
     margin: 1rem;
 }
 
+@media print {
+    aside {
+        background: none;
+    }
+
+    .clip {
+        filter: none !important;
+    }
+
+    .circle {
+        border-color: black;
+    }
+}

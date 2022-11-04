@@ -47,3 +47,17 @@ aside {
 .objects :last-child {
   margin-inline-start: auto;
 }
+
+@media print {
+  aside {
+    background: none;
+  }
+
+  .objects {
+    filter: none !important;
+  }
+
+  .objects hr {
+    border-color: black;
+  }
+}

@@ -38,3 +38,17 @@ button {
   white-space: pre;
   font-size: .8em;
 }
+
+@media print {
+  aside { 
+    background: none;
+  }
+
+  .layout div {
+    border-color: black;
+  }
+
+  button {
+    background: black;
+  }
+}
