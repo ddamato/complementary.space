@@ -40,6 +40,15 @@
     overflow: visible !important;
   }
 
+  .hero p {
+    -webkit-background-clip: initial;
+    -moz-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    -moz-text-fill-color: initial;
+    background: none;
+    color: black;
+  }
+
   blockquote {
     page-break-inside: avoid;
   }
