@@ -1,4 +1,3 @@
-console.log('running');
 const root = document.getElementById('main');
 const h3s = document.querySelectorAll('h3');
 const lis = document.querySelectorAll('.contents li');

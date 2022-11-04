@@ -22,43 +22,6 @@
   --text-title: 2em;
 }
 
-@media print {
-  :root {
-    --box-foreground: #000;
-    --box-background: #fff;
-    --box-accent: #000;
-    --callout-foreground: #000;
-    --callout-background: #1A2980;
-    --callout-accent: #000;
-    --code-background: #fff;
-    --dot-pattern: #fff;
-  }
-
-  * {
-    filter: none !important;
-    perspective: none !important;
-    overflow: visible !important;
-  }
-
-  .hero p {
-    -webkit-background-clip: initial;
-    -moz-background-clip: initial;
-    -webkit-text-fill-color: initial;
-    -moz-text-fill-color: initial;
-    background: none;
-    color: black;
-  }
-
-  blockquote {
-    page-break-inside: avoid;
-  }
-
-  .contents,
-  .cubes {
-    display: none !important;
-  }
-}
-
 /* =============================== density shifts styles =============================== */
 
 body {
@@ -433,4 +396,43 @@ pre .token.comment {
     rotateY(90deg) 
     translateX(calc(var(--cube-size) / 2))
     translateZ(calc(var(--cube-size) / -2));
+}
+
+/* =============================== print styles =============================== */
+
+@media print {
+  :root {
+    --box-foreground: #000;
+    --box-background: #fff;
+    --box-accent: #000;
+    --callout-foreground: #000;
+    --callout-background: #1A2980;
+    --callout-accent: #000;
+    --code-background: #fff;
+    --dot-pattern: #fff;
+  }
+
+  * {
+    filter: none !important;
+    perspective: none !important;
+    overflow: visible !important;
+  }
+
+  .hero p {
+    -webkit-background-clip: initial;
+    -moz-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    -moz-text-fill-color: initial;
+    background: none;
+    color: black;
+  }
+
+  blockquote {
+    page-break-inside: avoid;
+  }
+
+  .contents,
+  .cubes {
+    display: none !important;
+  }
 }
