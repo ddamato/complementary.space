@@ -32,7 +32,7 @@ span span {
   transform: scale(.7);
 }
 
-@media print {
+@media print, (prefers-color-scheme: light)  {
   * {
     filter: none !important;
   }

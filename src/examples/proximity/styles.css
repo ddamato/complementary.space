@@ -48,7 +48,7 @@ aside {
   margin-inline-start: auto;
 }
 
-@media print {
+@media print, (prefers-color-scheme: light) {
   * {
     filter: none !important;
   }

@@ -86,7 +86,7 @@ aside {
   margin-top: auto;
 }
 
-@media print {
+@media print, (prefers-color-scheme: light)  {
   * {
     filter: none !important;
   }

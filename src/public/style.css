@@ -142,7 +142,7 @@ p {
 
 .contents ul:hover {
   max-width: 100%;
-  background: #003;
+  background: var(--box-background);
   transition: background .5s ease, max-width 1s ease;
 }
 
@@ -155,7 +155,7 @@ p {
 
 .contents [aria-current] a,
 .contents a:hover {
-  color: white;
+  color: var(--box-foreground);
 }
 
 .contents a:before {
@@ -172,7 +172,7 @@ header h1 {
   display: flex;
   flex-direction: column;
   font-size: min(1em, 7vw);
-  filter: drop-shadow(0 .125em 3px #000000);
+  filter: drop-shadow(0 .125em 3px var(--code-background));
   margin: 0;
 }
 
@@ -195,7 +195,7 @@ header h1 span {
   padding-block: var(--space-away);
 }
 
-.hero p {
+.description {
   margin: 0;
   font-size: min(3em, 10vw);
   max-width: 75vw;
@@ -364,7 +364,7 @@ pre .token.comment {
   transform-style: preserve-3d;
   transform: translateY(0em) rotate3d(1, 1, 1, var(--cube-rotation));
   animation: float 5s var(--cube-float) ease-in-out alternate infinite;
-  background-image: var(--cube-face);
+  background: var(--cube-face);
   height: var(--cube-size);
   width: var(--cube-size);
   transform-origin: center;
@@ -398,9 +398,9 @@ pre .token.comment {
     translateZ(calc(var(--cube-size) / -2));
 }
 
-/* =============================== print styles =============================== */
+/* =============================== light / print styles =============================== */
 
-@media print {
+@media print, (prefers-color-scheme: light) {
   :root {
     --box-foreground: #000;
     --box-background: #fff;
@@ -410,15 +410,14 @@ pre .token.comment {
     --callout-accent: #000;
     --code-background: #fff;
     --dot-pattern: #fff;
+    --cube-face: #aaa;
   }
 
   * {
     filter: none !important;
-    perspective: none !important;
-    overflow: visible !important;
   }
 
-  .hero p {
+  .description {
     -webkit-background-clip: initial;
     -moz-background-clip: initial;
     -webkit-text-fill-color: initial;
@@ -426,9 +425,16 @@ pre .token.comment {
     background: none;
     color: black;
   }
+}
 
+@media print {
   blockquote {
     page-break-inside: avoid;
+  }
+
+  * {
+    perspective: none !important;
+    overflow: visible !important;
   }
 
   .contents,

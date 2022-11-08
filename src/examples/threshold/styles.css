@@ -35,7 +35,7 @@ aside {
     margin: 1rem;
 }
 
-@media print {
+@media print, (prefers-color-scheme: light) {
     * {
         filter: none !important;
     }
