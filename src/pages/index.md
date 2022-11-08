@@ -3,7 +3,7 @@
 
 What you are about to read is a provocative take on how we think of space in design. This thesis takes the concepts of Gestalt and pushes them further to identify the _why_. As digital product designers, why do we choose one amount of space over another? "Because it looks better" is a common response but _why_ does it look better? Perhaps more accurately, why does it look more correct?
 
-On the surface selecting an amount of space seems to be a subjective determination. However, once we identify the why, we can encode the purpose into a systematic usage making the decision to choose one amount of space over another more clear and objective.
+On the surface, selecting an amount of space seems to be a subjective determination. However, once we identify the why, we can encode the purpose into a systematic usage making the decision to choose one amount of space over another more clear and objective.
 
 Throw out those T-shirt sized design tokens, it's time we back up our decisions with meaningful motives and prepare for the future.
 
@@ -22,7 +22,7 @@ Many web applications and sites were designed in a primarily light colored theme
 
 As described above, design tokens should be able to drive this task. Places which used to be one value assigned by a token now needed to resolve to an entirely different value. This should be as easy as changing the current value of `--color-blue-500` to another color. Except, **this will ruin the relationship between the name and the value that was once assigned.** As a more dramatic example, body text which might be `--color-black` now may need to have a light color assigned for dark-mode. This would ultimately cause confusion when designing an entire experience with dozens of tokens named after their colors.
 
-The answer here was to name the token by expected usage within the design. These are called "**semantic tokens**" and they describe purpose instead of describing the value itself. This introduces tokens such as `--body-background-color` which can be used to inform the web page background color without hinting at what the final color value is. This allows the background to be either a light or dark color depending on an earlier assignment. Using semantic tokens in the styling of the application not only helps support light and dark-mode, but also any additional theming experiements that the organization may want to explore.
+The answer here was to name the token by expected usage within the design. These are called "**semantic tokens**" and they describe purpose instead of describing the value itself. This introduces tokens such as `--body-background-color` which can be used to inform the web page background color without hinting at what the final color value is. This allows the background to be either a light or dark color depending on an earlier assignment. Using semantic tokens in the styling of the application not only helps support light and dark-mode, but also any additional theming experiments that the organization may want to explore.
 
 Semantic tokens are a quality of life improvement similar to writing the name of a room on a paint can; opposed to writing the name of a color on the walls of a room. **Label the paint can instead of the wall.** You can quickly recall the colors of each room by visiting the place with cans, make changes, and reassociate. All of this is done without visiting a single painted room to verify the color. [^paint]
 
@@ -31,11 +31,11 @@ The difficulty that comes with adoption of semantic tokens is trust. Because `--
 ### Concept
 ## Deep into space
 
-Determining why we choose a color is well-documented. We choose for accessibility, branding, precedence, feedback, and more. Encoding these into semantic token names is fairly straight-forward. As an example, error text is often red but which shade to choose will depend on the background the text is on. Choosing `--text-error-color` opens the possibility of different shades of red depending on the rest of the chosen colors. Clearly, it would be best to choose a semantic naming convention for all tokens in order allow for style flexibility.
+Determining why we choose a color is well-documented. We choose for accessibility, branding, precedence, feedback, and more. Encoding these into semantic token names is fairly straight-forward. As an example, error text is often red but which shade to choose will depend on the background the text is on. Choosing `--text-error-color` opens the possibility of different shades of red depending on the rest of the chosen colors. Clearly, it would be best to choose a semantic naming convention for all tokens in order to allow for style flexibility.
 
-The semantic naming convention works for easily for color (along with other tokens such as font and roundness) because they are targeting elements and content. We can identify each piece of content as an object in a digital world with several properties of style. This is not the case for space. Because it is effectively nothing, it is hard to associate it with a name and further a purpose of its own. **Space is dependent on the objects that create it.**[^css]
+The semantic naming convention works easily for color (along with other tokens such as font and roundness) because they are targeting elements and content. We can identify each piece of content as an object in a digital world with several properties of style. This is not the case for space. Because it is effectively nothing, it is hard to associate it with a name and further a purpose of its own. **Space is dependent on the objects that create it.**[^css]
 
-So what is the purpose of space? This is covered by the [Gestalt priniciple of proximity](https://www.nngroup.com/articles/gestalt-proximity/).
+So what is the purpose of space? This is covered by the [Gestalt principle of proximity](https://www.nngroup.com/articles/gestalt-proximity/).
 
 > The principle of proximity states that items close together are likely to be perceived as part of the same group — sharing similar functionality or traits.
 
@@ -100,7 +100,24 @@ This approach isn't limited to describing the space between objects. Many system
 
 Admittedly, supporting this system outside of a development environment is most likely a challenge. Design tools do not often provide complete coverage to the web medium. **What follows will be the engineered solution used on this very site.**
 
-The first task is to decide density levels; how many different shifts of density do you need to support? Start with 3. The first for the root of the page for big headlines and calls to action, the next for the majority of content, and the final for details and passive content. I've opted to avoid naming the levels to deny the possibility of reordering them with the added bonus of not needing to think of meaningful names.
+Before we dive into the details of the code, we should understand a key feature of modern CSS. [CSS Custom Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) can be thought of as author-defined variables. This is similar to the concept of design tokens but with one additional feature. **CSS Custom Properties allow the value of the property to be redefined in different scopes within the same page.** This means you can define `--background-color: white` at start of the page, but then change this to `--background-color: black` in a deeper area of the same page.
+
+```css
+body {
+    --background-color: white;
+    --foreground-color: black;
+}
+
+/* new scope, <div data-theme="inverted" /> */
+[data-theme="inverted"] {
+    --background-color: black;
+    --foreground-color: white;
+}
+```
+
+In this way, a page author can apply `data-theme="inverted"` to any element within the page to immediately invert the colors within as long as elements within the scope are using the same variable names. This is supported without providing a whole new set of variables to define inversion. This keeps the amount of variables low and the names constant; avoiding the need to provide adjustments to existing variable names such as "inverted" or "contrast". The background color will be resolved based on the given scope; triggered by an HTML attribute.
+
+Now that this CSS feature is understood, the first task is to decide density levels. How many different shifts of density do you need to support? Start with 3. The first for the root of the page for big headlines and calls to action, the next for the majority of content, and the final for details and passive content. I've opted to avoid naming the levels to deny the possibility of reordering them with the added bonus of not needing to think of meaningful names.
 
 The next task is to create the "trigger" for the shift. This can be done in CSS by creating a selector which changes the values of variables for elements within and in the tree below. While you could use a class name, Here we use a data attribute. This ensures that class name manipulation doesn't affect the density curation and is often easier to spot when inspecting the DOM.[^attribute]
 
@@ -258,13 +275,13 @@ It is important to reiterate: **designers remain in control of the amount of spa
 
 [^variable]: I'll be using [CSS Custom Property](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) syntax to describe variables and tokens in this document. While you could use other methods of defining tokens, CSS Custom Properties are the most flexible since they can be redefined in different contexts. This will be helpful in later examples.
 
-[^paint]: In reality, the color of a room is dependent on factors that are often located within the physical space that would be challenging to systemitize. A digital composition is arguably much more manageable but the analogy is pleasant.
+[^paint]: In reality, the color of a room is dependent on factors that are often located within the physical space that would be challenging to systematize. A digital composition is arguably much more manageable but the analogy is pleasant.
 
 [^css]: This aligns with the way we normally apply space in CSS. It is more common to add space to an object than it is to create an element for the sole purpose of existing as space itself.
 
 [^incomplete]: While English has only two words, other languages have additional words to further divide referencial concepts. For example according to [Demonstratives in discourse](https://langsci-press.org/catalog/book/282), Estonian has 6 words: demonstratives _too_ ‘that’, _seal_ ‘there’, and _sealt_ ‘thence’ are used while referring to distant referents while demonstratives _see_ ‘this’, _siin_ ‘here’, and _siit_ ‘hence’ are used for referring to near referents. While this fact might possibly support more than the concepts of here and there, this exploration will argue that the limited set is more helpful.
 
-[^relationships]: When I started thinking about how to quantify space before using density shifts, I originally considered using "degrees" to identify amounts of space; just like how there are degrees of social separation. While I believe a person's first introduction to the idea would potentially slow them down to learn more about the approach, ultimately the usage was discarded since it is no different than T-shirt sizing. Furthermore, trying to provide a meaningful scale and example using the gray area of friends and acquaintences would be socially awkward.
+[^relationships]: When I started thinking about how to quantify space before using density shifts, I originally considered using "degrees" to identify amounts of space; just like how there are degrees of social separation. While I believe a person's first introduction to the idea would potentially slow them down to learn more about the approach, ultimately the usage was discarded since it is no different than T-shirt sizing. Furthermore, trying to provide a meaningful scale and example using the gray area of friends and acquaintances would be socially awkward.
 
 [^margin]: I'm avoiding `margin` here because it commonly can achieve both space around and space between items. In modern development, `margin` is often avoided for specific amounts of space and instead set as `auto` to help with positioning in responsive layouts. "Features" like [margin collapsing](https://www.joshwcomeau.com/css/rules-of-margin-collapse/) cause irregularities when crafting layouts while `padding` follows a more conventional ruleset.
 

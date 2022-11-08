@@ -3,7 +3,7 @@
 }
 
 aside {
-  background: rgba(0, 0, 153, 0.5);
+  background: var(--code-background);
   padding: .5rem;
   text-align: center;
   max-width: 600px;
@@ -19,7 +19,7 @@ aside {
 }
 
 .layout div {
-  border: 4px dashed hotpink;
+  border: 4px dashed var(--callout-accent);
   display: flex;
   padding: .5rem;
   background: rgba(0, 0, 0, .4);
@@ -29,26 +29,13 @@ aside {
 }
 
 button {
-  background: hotpink;
-  border: none;
+  background: var(--box-background);
+  border: 1px solid var(--callout-foreground);
   border-radius: .25em;
-  color: white;
+  color: var(--box-foreground);
   font: inherit;
   padding: .25em .5em;
   white-space: pre;
   font-size: .8em;
-}
-
-@media print {
-  aside { 
-    background: none;
-  }
-
-  .layout div {
-    border-color: black;
-  }
-
-  button {
-    background: black;
-  }
+  cursor: pointer;
 }
