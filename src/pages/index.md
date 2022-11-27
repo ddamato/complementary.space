@@ -5,7 +5,7 @@ What you are about to read is a provocative take on how we think of space in des
 
 On the surface, selecting an amount of space seems to be a subjective determination. However, once we identify the why, we can encode the purpose into a systematic usage making the decision to choose one amount of space over another more clear and objective.
 
-Throw out those T-shirt sized design tokens, it's time we back up our decisions with meaningful motives and prepare for the future.
+In this journey, we'll review how design tokens are accomplished today for values other than space and why the modern approach is successful. We'll understand why space hasn't been included and take steps to introduce a new way of communicating these values. For folks inclined to experiment with the technique, some code examples are provided that can kickoff further system explorations.
 
 ### History
 ## Design tokens
@@ -14,34 +14,22 @@ The following is a definition of design tokens from the [Salesforce Lightning De
 
 > Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes.
 
-You may be familiar with some basic examples of design tokens. For example, `--color-blue-500`[^variable] should represent a shade of blue which a design team has determined to be a part of their regularly used palette of colors. The number often represents its placement among other blue colors within the palette. As you can see, it is possible to encode information about the value within the name. From here, the tokens can be published and used throughout the organization so values can be referenced instead of permanently written. If the value of `--color-blue-500` needs to change, that work can happen away from the product development and inside of the curated palette.
+**Semantic tokens** are a method of describing purpose within the design token name instead of describing the value itself. They are the difference between `--color-blue-500` and `--body-background-color`[^variable]. This naming technique is a quality of life improvement similar to writing the name of a room on a paint can; opposed to writing the name of a color on the walls of a room. **Label the paint can instead of the wall.** You can quickly recall the colors of each room by visiting the place with cans, make changes, and reassociate. All of this is done without visiting a single painted room to verify the color. [^paint]
 
-It is one task to curate a list of tokens, but it's an entirely different exercise to determine _where_ designers should use that token. In other words, as a design system maintainer, **how do I provide guidance on when to use `--color-blue-500`?** A solution comes from a related problem; dark-mode.
+The difficulty that comes with adoption of semantic tokens is trust. Because `--body-background-color` doesn't explicitly suggest what color it will be, those looking to find a specific color will be disappointed. This requires a mental shift to cease thinking in terms of value and start thinking in terms of purpose such as for accessibility, branding, precedence, feedback, and more. Asking "what is this thing?" instead of "what color should I use?" because the design system has the answer to the latter; only a product designer can answer the former.
 
-Many web applications and sites were designed in a primarily light colored theme; expected to resemble paper. After all, the pages on the web were originally intended to be documents. However, people began to identify [the benefits of dark mode](https://blog.weekdone.com/why-you-should-switch-on-dark-mode/). Around 2019, there was a surge of activity in the web design community looking for the most efficient and elegant ways to create beautiful and usable dark-modes for existing pages.
-
-As described above, design tokens should be able to drive this task. Places which used to be one value assigned by a token now needed to resolve to an entirely different value. This should be as easy as changing the current value of `--color-blue-500` to another color. Except, **this will ruin the relationship between the name and the value that was once assigned.** As a more dramatic example, body text which might be `--color-black` now may need to have a light color assigned for dark-mode. This would ultimately cause confusion when designing an entire experience with dozens of tokens named after their colors.
-
-The answer here was to name the token by expected usage within the design. These are called "**semantic tokens**" and they describe purpose instead of describing the value itself. This introduces tokens such as `--body-background-color` which can be used to inform the web page background color without hinting at what the final color value is. This allows the background to be either a light or dark color depending on an earlier assignment. Using semantic tokens in the styling of the application not only helps support light and dark-mode, but also any additional theming experiments that the organization may want to explore.
-
-Semantic tokens are a quality of life improvement similar to writing the name of a room on a paint can; opposed to writing the name of a color on the walls of a room. **Label the paint can instead of the wall.** You can quickly recall the colors of each room by visiting the place with cans, make changes, and reassociate. All of this is done without visiting a single painted room to verify the color. [^paint]
-
-The difficulty that comes with adoption of semantic tokens is trust. Because `--body-background-color` doesn't explicitly suggest what color it will be, those looking to find a specific color will be disappointed. This requires a mental shift to cease thinking in terms of color value and start thinking in terms of purpose. Asking "what is this thing?" instead of "what color should I use?" because the design system has the answer to the latter; only a product designer can answer the former.
+Trust that the semantic token represents an appropriate value for the concept it describes.
 
 ### Concept
 ## Deep into space
 
-Determining why we choose a color is well-documented. We choose for accessibility, branding, precedence, feedback, and more. Encoding these into semantic token names is fairly straight-forward. As an example, error text is often red but which shade to choose will depend on the background the text is on. Choosing `--text-error-color` opens the possibility of different shades of red depending on the rest of the chosen colors. Clearly, it would be best to choose a semantic naming convention for all tokens in order to allow for style flexibility.
-
-The semantic naming convention works easily for color (along with other tokens such as font and roundness) because they are targeting elements and content. We can identify each piece of content as an object in a digital world with several properties of style. This is not the case for space. Because it is effectively nothing, it is hard to associate it with a name and further a purpose of its own. **Space is dependent on the objects that create it.**[^css]
+The semantic naming convention works easily for color, font, and roundness because they target elements; _identifiable things_. We can describe each of these pieces as an object in a digital world with several properties of style. This is not the case for space. Because it is effectively nothing, it is hard to associate it with a name and further a purpose of its own. **Space is dependent on the objects that create it.**[^css]
 
 So what is the purpose of space? This is covered by the [Gestalt principle of proximity](https://www.nngroup.com/articles/gestalt-proximity/).
 
 > The principle of proximity states that items close together are likely to be perceived as part of the same group — sharing similar functionality or traits.
 
-In other words, objects that are closer together are perceived as more related than those which are farther apart. This means the key to naming space values as semantic tokens has to do with encoding the relation to the surrounding items.
-
-To do this, let us consider social relationships to help create an analogous example. When you were young, you most likely lived in a home with your family. Each person within the home was most likely closely related to you in some way. In contrast, the majority of people who live outside of your home have a more distant relationship from you. In this way there are people that are close to you, and those that are far from you.[^relationships] In other words, people that are _here_ and people that are _there_.[^incomplete]
+In other words, objects that are closer together are perceived as more related than those which are farther apart. This means the key to naming space values as semantic tokens has to do with encoding the relation to the surrounding items. Simply put, there are things that are _here_ and things that are _there_ in relation to a subject.[^incomplete]
 
 > <ex-proximity>Spatial demonstratives relative to a subject</ex-proximity>
 
@@ -53,45 +41,56 @@ Another concept we'll need to introduce is scaling. When you share a video call 
 
 > <ex-scaling>The tunneling effect scales content and space</ex-scaling>
 
-The bottom line here is we can change the size of objects and the space around them proportionally to maintain the same relationships but fit into a smaller area. Our user has one interface but can traverse across several visual densities at the same time.
+The bottom line here is we can change the size of objects and the space around them proportionally to maintain the same relationships but fit into a smaller area. Our user is experiencing one interface but can traverse across several visual densities at the same time.
 
 ### Application
 ## Wisely dense
 
-You may be familiar with the concepts of adding spacing using CSS and foundationally in design. Put simply&hellip; [^margin]
+You may be familiar with the concepts of adding spacing using CSS and foundationally in design. In short&hellip; [^margin]
 
 - **Gap** is the space _between_ items.
 - **Padding** is the space _around_ items.
 
-We can extend this a bit farther by speaking in terms of relationships. That is, the gap represents a much closer relationship between the items because they are all children in the same "house". While the padding often attempts to separate the items between "houses". So this means that we can often assign a "near" spacing token to the gap property and the "away" spacing token to padding property in areas where we want to display the appropriate relationship.
+We can extend this a bit farther by speaking in terms of relationships.[^relationships] That is, the gap represents a much closer relationship between the items because they are all siblings in the same "house". While the padding often attempts to separate the items between different, less-related "houses". Now that we are speaking in terms of relationships, we use semantic spacing tokens to describe those relationships.
 
 ```css
 ul {
     display: flex;
     padding: var(--space-away);
-    gap: var(--space-near); 
+    gap: var(--space-near);
 }
 ```
 
-The example above applies the `--space-near` spacing token to inform the gap between children of the `<ul/>` element. Adding `--space-near` to the gap is not a hard and fast rule, you can also use these two tokens to describe either padding, gap, or any area where you need to show relationship using space.
+The example above applies the `--space-near` spacing token to inform the gap between children of the `<ul/>` element while the `--space-away` token separates the `<ul/>` from other elements around it.
+
+Importantly, the `--space-near` and `--space-away` tokens are not meant to always be assigned to these properties blindly. **The question about relationships is key.** For example, if the amount of space between the text and the edge of a button is meant to be larger on the sides, we can describe that space with the tokens as well.
 
 ```css
 button {
-    padding: var(--space-near) var(--space-away);
+    padding-top: var(--space-near);
+    padding-bottom: var(--space-near);
+
+    /* larger space on sides */
+    padding-left: var(--space-away);
+    padding-right: var(--space-away);
 }
 ```
 
-This example adds more space on the left and right compared to the top and bottom as is commonly applied to buttons. The important idea here is that there are only two tokens and that the name makes relationships clear.
+This example adds more space on the left and right compared to the top and bottom as is commonly applied to buttons. The important idea here is that we use relationships to drive the token curation; not that the `--space-away` must be used for all padding. It is more thoughtful.
 
-At this point, the main criticism you may identify is that only having two tokens is extremely limiting. The distance between sections of a page is not often the same as the distance between buttons in a navigation, even if they have similar relationships as near identical children of a parent. This is why many design systems usually land on the T-shirt sizing approach; to support the many various amounts of space. However, not only does T-shirt sizing oppose semantic naming, the abundance of choice is paradoxically causing the very choice of which token to use to become more difficult ([Hick's Law](https://lawsofux.com/hicks-law)). Reducing the number of decisions (ie., tokens) will increase the chance of an appropriate selection. Reframing the question to "what is the relationship between these items?" omits the artistic subjectivity that would otherwise cause a biased choice. The answer is near binary; they are either related or not.[^none]
+At this point, a main criticism you may identify is that only having two tokens is extremely limiting. The distance between sections of a page is not often the same as the distance between buttons in a navigation, even if they have similar relationships as near identical children of a parent. This is why many design systems usually land on a T-shirt sizing approach; to support the many various amounts of space. However, not only does T-shirt sizing oppose semantic naming, the abundance of choice is paradoxically causing the very choice of which token to use to become more difficult ([Hick's Law](https://lawsofux.com/hicks-law)). Reducing the number of decisions (ie., tokens) will increase the chance of an appropriate selection. Reframing the question to "what is the relationship between these items?" omits the artistic subjectivity that would otherwise cause a biased choice. The answer is near binary; they are either related or not.[^none] This is not exclusive to T-shirt sizing; any naming approach in which there is difficulty adding or removing tokens is not truly scalable.
 
 The method to unlock the expected additional values of space using this system is achieved by curated areas of shifting density; **the practical application of the tunneling effect.** This allows the physical amount of space between page sections to be larger than the amount between navigational buttons located deeper into the page.
 
 > <ex-wireframe>Is it a page or is it a card? Does it matter?</ex-wireframe>
 
-The wireframe on the left could be a page, or a card within a page. The wireframe on the right shows that the composition could be nested within itself and maintain all the same relationships by scaling the values down and becoming more dense. The measurement of space becomes smaller, along with the dimensions of images and sizes of the font. Importantly, not every "house" (or container of elements) is required to trigger a density shift. This is a curated process and most compositions can be achieved with a few shifts. Specifically, if your current design token collection has 8 spacing tokens, this would be covered by only 4 density changes. This is possible since each density shift will change how the `--space-near` and `--space-away` token values finally resolve.
+The wireframe on the left could be a page, or a card within a page. The wireframe on the right shows that the composition could be nested within itself and maintain all the same relationships by scaling the values down and becoming more dense. The measurement of space becomes smaller, along with the dimensions of images and sizes of the font. Importantly, not every "house" (or container of elements) is required to trigger a density shift. This is a curated process and most compositions can be achieved with a few shifts. Specifically, if your current design token collection has 8 spacing tokens, this would be covered by only 4 density changes (2 tokens &times; 4 shifts = 8 values of space across an interface). This is possible since each density shift will change how the `--space-near` and `--space-away` token values finally resolve.
 
-The notion of density shifts supports the creative freedom for designers while maintaining a systematic application of the tokens. This provides designers the flexibility to decide if an area of the experience is meant to be spacious, compact, or something in between. Furthermore, a robust system where the spacing tokens are informed by a single grid unit value could support a themeable spacing system. One theme could support a roomy interface while another expects a data-dense table with a single value difference between them.
+The notion of density shifts supports the creative freedom for designers while maintaining a systematic application of the tokens. This provides designers the flexibility to decide if an area of the experience is meant to be spacious, compact, or something in between. Furthermore, a robust system where the spacing tokens are informed by a single grid unit value could support a themeable spacing system. One theme could support a roomy interface while another expects a data-dense table with a single themable value difference between them.
+
+Below is a live example which is visually similar to designs provided by [Nathan Curtis](https://eightshapes.com/nathan-curtis/) in [his spacing token exploration](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62) while using complementary space. Each shift in density is represented with a pink outline.
+
+> <ex-codepen>A live exploration of complementary space</ex-codepen>
 
 This approach isn't limited to describing the space between objects. Many systems will tightly couple typography metrics to curate overall vertical rhythm in a composition. The density shift concept can be leveraged to drive font size changes in new contexts. As an example, a section title of a page should be hierarchically similar to the title of a card in comparison to the surrounding content for each.[^importance] Meanwhile, line-height is inversely proportional to density for the purposes of readability since observers are reading content across densities.
 
@@ -170,7 +169,7 @@ body [data-density-shift] [data-density-shift] {
 }
 ```
 
-Now you assign the value expected for each. As a reminder, the gap is commonly smaller than the padding. With each shift down the next values should be smaller than the previous. Here I'd opted to halve the values between shifts.
+Now you assign the value expected for each. As a reminder, near is closer than away so the values provided should represent that relationship. Additionally, with each shift down the next values should be smaller than the previous because nested areas become more dense. Here I'd opted to halve the values between shifts.
 
 ```css
 body {
@@ -188,6 +187,8 @@ body [data-density-shift] [data-density-shift] {
     --space-away: 2rem;
 }
 ```
+
+You might notice that the amount of space in this setup repeats between shifts. As an example, in one density shift `--space-near` equals `4rem` but in the next `--space-away` also equals `4rem`. The curation of the values is completely up to the author based on each density shift. This also has the benefit of keeping focus within one context at a time. We aren't looking across shifts to decide on values, we do so within the context of each individual shift.
 
 As recommended earlier, you can support a more flexible spacing system for experimentation and various design needs by calculating the amounts using a base value or grid unit. Here I'd opted to use the golden ratio between shifts.
 
@@ -220,7 +221,7 @@ button {
 }
 ```
 
-What you might notice is that the `<button/>` component will be rendered with exceptionally large padding when applied in the body without any density shifts. This is by design and allows for different sized components to exist without explicitly activating them. Smaller buttons exist in denser areas of the page. Looking for a smaller button is asking for the surrounding density to change.
+What you might notice is that the `<button/>` component will be rendered with exceptionally large padding when applied in the body without any density shifts. This is by design and allows for different sized components to exist without explicitly activating them. Smaller buttons exist in denser areas of the page. Looking for a smaller button is asking for the surrounding density to change.[^damato]
 
 > <ex-button>Density informs the element size</ex-button>
 
@@ -290,6 +291,8 @@ It is important to reiterate: **designers remain in control of the amount of spa
 [^importance]: The example here is specifically commenting on the relation of the title to the content, not to other titles. The underlying HTML elements which drive Search Engine Optimization (SEO) or assisted technology navigation using importance are frequently separate from the visual treatment. In other words, a `<p/>` can follow a `<h1/>`, `<h2/>`, `<h3/>` and so on. This is semantically valid independent of the font size for any of the elements.
 
 [^attribute]: For improved developer experience, you could opt to provide a component which renders a container with the attribute automatically assigned to avoid typos and unexpected results.
+
+[^damato]: If you'd like to see an example of button sizes relative to density shifts, visit [the button component page at system.damato.design](https://system.damato.design/library/button/). In this system using complementary space, there is no concept of size applied explcitly to the button; it is implicitly determined by the surrounding density.
 
 [^typography]: There is a great deal more to web typography that will make things more difficult even without thinking of a new spacing approach. I highly recommend reading [Deep dive CSS: font metrics, line-height and vertical-align](https://iamvdo.me/en/blog/css-font-metrics-line-height-and-vertical-align) to understand some of the pitfalls.
 
