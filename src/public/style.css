@@ -428,9 +428,21 @@ pre .token.comment {
     translateZ(calc(var(--cube-size) / -2));
 }
 
-/* =============================== light / print styles =============================== */
+/* =============================== print styles =============================== */
 
 @media print {
+  :root {
+    --box-foreground: #000;
+    --box-background: #fff;
+    --box-accent: #000;
+    --callout-foreground: #000;
+    --callout-background: #eee;
+    --callout-accent: #000;
+    --code-background: #fff;
+    --dot-pattern: #fff;
+    --cube-face: #aaa;
+  }
+
   blockquote {
     page-break-inside: avoid;
   }
@@ -438,6 +450,7 @@ pre .token.comment {
   * {
     perspective: none !important;
     overflow: visible !important;
+    filter: none !important;
   }
 
   .contents,

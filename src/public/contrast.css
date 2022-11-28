@@ -10,8 +10,8 @@ input[type="checkbox"]:checked ~ * {
   --cube-face: #aaa;
 }
 
-input[type="checkbox"]:checked ~ main * {
-  filter: none !important;
+input[type="checkbox"]:checked ~ main :where(h1, img, blockquote) {
+  filter: grayscale(1);
 }
 
 input[type="checkbox"]:checked ~ main .description {
