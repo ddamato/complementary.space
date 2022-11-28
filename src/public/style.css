@@ -51,9 +51,6 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
-  color: var(--box-foreground);
-  background: var(--box-background);
-  background-attachment: fixed;
 }
 
 a, strong {
@@ -80,6 +77,15 @@ main {
   scroll-behavior: smooth;
   scroll-padding-top: var(--space-away);
   padding: var(--space-away);
+  color: var(--box-foreground);
+  background: var(--box-background);
+  background-attachment: fixed;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 section { 
@@ -108,6 +114,32 @@ p {
   padding: var(--space-near);
 }
 
+/* =============================== contrast toggle styles =============================== */
+
+[for="contrast-toggle"] {
+  background: var(--callout-background);
+  color: var(--callout-accent);
+  padding: var(--space-near);
+  border-radius: .25em;
+  display: inline-flex;
+  cursor: pointer;
+  transition: .218s ease;
+}
+
+[for="contrast-toggle"]:hover {
+  color: var(--callout-foreground);
+}
+
+[for="contrast-toggle"] span {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
 /* =============================== contents styles =============================== */
 
 .contents {
@@ -134,16 +166,14 @@ p {
   pointer-events: initial;
   gap: var(--space-near);
   max-width: 60px;
-  background: transparent;
   direction: rtl;
-  transition: background 1s 1s ease, max-width .5s 0s ease;
+  transition: max-width .5s 0s ease;
   overflow: hidden;
 }
 
 .contents ul:hover {
   max-width: 100%;
-  background: var(--box-background);
-  transition: background .5s ease, max-width 1s ease;
+  transition: max-width 1s ease;
 }
 
 .contents a {
@@ -399,33 +429,6 @@ pre .token.comment {
 }
 
 /* =============================== light / print styles =============================== */
-
-@media print, (prefers-color-scheme: light) {
-  :root {
-    --box-foreground: #000;
-    --box-background: #fff;
-    --box-accent: #000;
-    --callout-foreground: #000;
-    --callout-background: #1A2980;
-    --callout-accent: #000;
-    --code-background: #fff;
-    --dot-pattern: #fff;
-    --cube-face: #aaa;
-  }
-
-  * {
-    filter: none !important;
-  }
-
-  .description {
-    -webkit-background-clip: initial;
-    -moz-background-clip: initial;
-    -webkit-text-fill-color: initial;
-    -moz-text-fill-color: initial;
-    background: none;
-    color: black;
-  }
-}
 
 @media print {
   blockquote {

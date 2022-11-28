@@ -5,6 +5,7 @@
     {% include "head.njk" %}
   </head>
   <body>
+    <input aria-label="Toggle Contrast Style" role="switch" type="checkbox" id="contrast-toggle" style="position: absolute; opacity: 0; pointer-events: none;"/>
     {% include "contents.njk" %}
     <main id="main" data-density-shift>
     <div class="cubes">
@@ -37,6 +38,12 @@
         <strong>Complementary</strong>
         <span>Space</span>
       </h1>
+      <label for="contrast-toggle" data-density-shift>
+        <span>
+          Toggle Contrast Style
+        </span>
+        {% include "contrast.svg" %}
+      </label>
     </header>
     <div class="hero max-content">
       <p class="description">{{ site.description }}</p>

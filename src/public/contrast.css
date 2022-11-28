@@ -1,0 +1,24 @@
+input[type="checkbox"]:checked ~ * {
+  --box-foreground: #000;
+  --box-background: #fff;
+  --box-accent: #000;
+  --callout-foreground: #000;
+  --callout-background: #eee;
+  --callout-accent: #000;
+  --code-background: #fff;
+  --dot-pattern: #fff;
+  --cube-face: #aaa;
+}
+
+input[type="checkbox"]:checked ~ main * {
+  filter: none !important;
+}
+
+input[type="checkbox"]:checked ~ main .description {
+  -webkit-background-clip: initial;
+  -moz-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  -moz-text-fill-color: initial;
+  background: none;
+  color: currentcolor;
+}
