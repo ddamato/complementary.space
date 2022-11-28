@@ -63,7 +63,7 @@ ul {
 
 The example above applies the `--space-near` spacing token to inform the gap between children of the `<ul/>` element while the `--space-away` token separates the `<ul/>` from other elements around it.
 
-Importantly, the `--space-near` and `--space-away` tokens are not meant to always be assigned to these properties blindly. **The question about relationships is key.** For example, if the amount of space between the text and the edge of a button is meant to be larger on the sides, we can describe that space with the tokens as well.
+Importantly, the `--space-near` and `--space-away` tokens are not meant to always be assigned to these properties blindly. **The question about relationships is key.** This is why the tokens are not named after padding and gap. For example, if the amount of space between the text and the edge of a button is meant to be larger on the sides, we can describe that space with the tokens as well.
 
 ```css
 button {
