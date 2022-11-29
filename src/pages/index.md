@@ -18,7 +18,7 @@ The following is a definition of design tokens from the [Salesforce Lightning De
 
 The difficulty that comes with adoption of semantic tokens is trust. Because `--body-background-color` doesn't explicitly suggest what color it will be, those looking to find a specific color will be disappointed. This requires a mental shift to cease thinking in terms of value and start thinking in terms of purpose such as for accessibility, branding, precedence, feedback, and more. Asking "what is this thing?" instead of "what color should I use?" because the design system has the answer to the latter; only a product designer can answer the former.
 
-Trust that the semantic token represents an appropriate value for the concept it describes.
+Trust that the semantic token represents an appropriate value for the concept it describes. Letting go of specific value expectations is critical when thinking semantically. This will be important when considering upcoming concepts.
 
 ### Concept
 ## Deep into space
