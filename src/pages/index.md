@@ -262,9 +262,9 @@ h2 {
 ### Adoption
 ## A space for everyone
 
-Change is hard. Realistically, this approach isn't meant to be a part of a migration effort but instead considered at the beginning of a system's creation. A point where the organization wholly agrees to explore space as a conversation about relationships and density. This is easier said than done.
+Change is hard. Realistically, this approach isn't meant to be a part of a siloed migration effort but instead treated as a reimagining of current paradigms. A point where the organization wholly agrees to explore space as a conversation about relationships and density. This is easier said than done.
 
-To start, consider reviewing wireframes instead of high-fidelity mockups or live pages. Looking at the abstract concepts will help focus the attention on the relationships without including the noise about what the final values of space should be. You can identify where areas of low and high density will occur due to content expectations. This will inform where a shift should take place.
+To start exploring complementary space in your own designs, consider reviewing wireframes instead of high-fidelity mockups or live pages. Looking at the abstract concepts will help focus the attention on the relationships without including the noise about what the final values of space should be. You can identify where areas of low and high density will occur due to content expectations. This will inform where a shift should take place.
 
 It is important to reiterate: **designers remain in control of the amount of space between elements and content.** This approach simply changes how designers communicate about space and streamlines the curation process. A designer can warrant the amount of space between elements by speaking in terms of relationships and density through a shared language and understanding. Finally, it allows designers to focus on what actually matters; guiding users toward satisfaction by way of an expertly crafted experience.
 
