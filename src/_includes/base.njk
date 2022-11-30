@@ -52,5 +52,10 @@
       {{ content | safe }}
     </section>
     </main>
+    <script type="text/javascript">
+      const $contrast = document.getElementById('contrast-toggle');
+      $contrast.addEventListener('input', () => localStorage.setItem('contrast', $contrast.checked));
+      $contrast.checked = localStorage.getItem('contrast') === 'true';
+    </script>
   </body>
 </html>
